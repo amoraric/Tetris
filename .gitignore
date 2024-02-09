@@ -4,6 +4,8 @@
 !*/
 !Doxyfile
 
+*.DS_Store
+
 # pas de fichier *~
 *~
 
