@@ -2,6 +2,7 @@
 #define BOARD_H
 
 #include <iostream>
+#include <vector>
 #include "Position.h"
 
 class Board {

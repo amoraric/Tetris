@@ -12,7 +12,10 @@ add_executable(Tetris main.cpp
     GameState.h
     Board.h
     Brick.h
-    Shape.h)
+    Shape.h
+    Game.h
+
+)
 
 set(CMAKE_CXX_FLAGS "-Wpedantic -Werror")
 

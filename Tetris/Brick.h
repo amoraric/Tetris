@@ -2,16 +2,16 @@
 #define BRICK_H
 
 #include "Position.h"
+#include "Shape.h"
 
 class Brick {
     int orientation_;
+    Shape s_;
     Position upperLeft_;
-    // shape
 public:
-    // constructor
+    Brick(Shape s);
     void translation();
-    void rotation();
-
+    void rotation();    
 };
 
 #endif // BRICK_H
