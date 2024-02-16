@@ -7,7 +7,6 @@
 
 class Board {
     std::vector<std::vector<bool>> matrix_;
-
     bool isInside(Position pos);
 };
 

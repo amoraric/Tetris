@@ -11,8 +11,6 @@ public:
     static const Direction LEFT;
     static const Direction DOWN;
     static const Direction RIGHT;
-
-// getter?
 };
 
 #endif // DIRECTION_H
