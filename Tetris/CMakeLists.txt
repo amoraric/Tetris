@@ -12,8 +12,15 @@ add_executable(Tetris main.cpp
     GameState.h
     Board.h
     Brick.h
-    Shape.h
+    Shapes.h
     Game.h
+    Player.h
+    Facade.h
+    Difficulty.h
+    Shape.h
+    Random.h
+    Observable.h
+    Observer.h
 
 )
 
