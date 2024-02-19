@@ -14,4 +14,9 @@ public:
     int getDy() const;
 };
 
+inline Direction::Direction(int x, int y)
+{
+
+}
+
 #endif // DIRECTION_H
