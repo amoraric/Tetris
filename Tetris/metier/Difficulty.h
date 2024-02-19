@@ -1,6 +1,9 @@
 #ifndef DIFFICULTY_H
 #define DIFFICULTY_H
 
+/**
+ * @brief The Difficulty class defines the difficulty of the game
+ */
 class Difficulty {
     int maxScore_;
     int maxLines_;
