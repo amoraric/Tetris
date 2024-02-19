@@ -17,7 +17,6 @@ set(SOURCES
         Observable.h
         Observer.h
         main.cpp
-
 )
 
 add_library(metier ${SOURCES})

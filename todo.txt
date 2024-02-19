@@ -1,2 +1,3 @@
 -check multiplicités dans uml et standard pour les attributs
 -check anglais 
+-écrire doc

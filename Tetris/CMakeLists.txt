@@ -8,7 +8,7 @@ add_subdirectory(metier)
 add_subdirectory(console)
 add_subdirectory(tests)
 add_subdirectory(gui)
-
+add_executable(Tetris main.cpp)
 set(CMAKE_CXX_FLAGS "-Wpedantic -Werror")
 
 #include(GNUInstallDirs)
