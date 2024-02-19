@@ -1,0 +1,33 @@
+\doxysection{Brick.\+h}
+\hypertarget{_brick_8h_source}{}\label{_brick_8h_source}\index{Tetris/metier/Brick.h@{Tetris/metier/Brick.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ BRICK\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ BRICK\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}BrickState.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}Position.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}Shape.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_board_8h}{Board.h}}"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}Direction.h"{}}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_brick}{Brick}}\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{int}\ orientation\_;}
+\DoxyCodeLine{00022\ \ \ \ \ std::unique\_ptr<Shape>\ shape\_;}
+\DoxyCodeLine{00026\ \ \ \ \ std::unique\_ptr<Position>\ upperLeft\_;}
+\DoxyCodeLine{00030\ \ \ \ \ BrickState\ state\_;}
+\DoxyCodeLine{00031\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{class_brick_a294d6943d71d722e122b8fd250ea2a78}{Brick}}(\mbox{\hyperlink{struct_shape}{Shape}}\ s);}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_brick_ab727fba54f810dcc342cb2693a8e3f76}{translation}}(\mbox{\hyperlink{class_direction}{Direction}}\ direction);}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_brick_abea20dc7496a7ce2500f170f93cf0949}{rotation}}(\textcolor{keywordtype}{bool}\ clockwise);}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{bool}\ canMove(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_board}{Board}}\&\ board,\ \textcolor{keywordtype}{int}\ dx,\ \textcolor{keywordtype}{int}\ dy)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{bool}\ canRotate(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_board}{Board}}\&\ board)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00049\ \ \ \ \ BrickState\ getBrickState();}
+\DoxyCodeLine{00050\ \ \ \ \ std::unique\_ptr<Position>\ getUpperLeft();}
+\DoxyCodeLine{00051\ \ \ \ \ std::unique\_ptr<Shape>\ getShape();}
+\DoxyCodeLine{00052\ \};}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ BRICK\_H}}
+
+\end{DoxyCode}

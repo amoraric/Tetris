@@ -1,0 +1,67 @@
+\doxysection{Board Class Reference}
+\hypertarget{class_board}{}\label{class_board}\index{Board@{Board}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_board_a921efabcf4296a12272eb96f5a1507b4}{Board}} (int rows, int columns)
+\begin{DoxyCompactList}\small\item\em \doxylink{class_board}{Board} Constructor of the board. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_board_af0fbccf26c34d99f2cdaf0d0b71681e4}{is\+Inside}} (\mbox{\hyperlink{class_position}{Position}} position)
+\begin{DoxyCompactList}\small\item\em is\+Inside Checks if a position is inside the board \end{DoxyCompactList}\item 
+\Hypertarget{class_board_aa13f17380006c5ac7d456bf20e6782a7}\label{class_board_aa13f17380006c5ac7d456bf20e6782a7} 
+void {\bfseries clear\+Lines} ()
+\begin{DoxyCompactList}\small\item\em clear\+Lines clear the lines of the board \end{DoxyCompactList}\item 
+\Hypertarget{class_board_ae32340a71046e4a13abc9a951e6719f2}\label{class_board_ae32340a71046e4a13abc9a951e6719f2} 
+std\+::vector$<$ int $>$ {\bfseries get\+Completed\+Lines} ()
+\item 
+\Hypertarget{class_board_ae86a81deb882e36d484e28eca82cfd57}\label{class_board_ae86a81deb882e36d484e28eca82cfd57} 
+void {\bfseries place\+Brick} (const \mbox{\hyperlink{struct_shape}{Shape}} \&shape, \mbox{\hyperlink{class_position}{Position}} pos)
+\item 
+\Hypertarget{class_board_a27423062af4cfe163cc0f54982fcb42a}\label{class_board_a27423062af4cfe163cc0f54982fcb42a} 
+bool {\bfseries is\+Occupied} (\mbox{\hyperlink{class_position}{Position}} pos) const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_board_a921efabcf4296a12272eb96f5a1507b4}\label{class_board_a921efabcf4296a12272eb96f5a1507b4} 
+\index{Board@{Board}!Board@{Board}}
+\index{Board@{Board}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{Board()}{Board()}}
+{\footnotesize\ttfamily Board\+::\+Board (\begin{DoxyParamCaption}\item[{int}]{rows,  }\item[{int}]{columns }\end{DoxyParamCaption})}
+
+
+
+\doxylink{class_board}{Board} Constructor of the board. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rows} & Number of rows \\
+\hline
+{\em columns} & Number of columns \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_board_af0fbccf26c34d99f2cdaf0d0b71681e4}\label{class_board_af0fbccf26c34d99f2cdaf0d0b71681e4} 
+\index{Board@{Board}!isInside@{isInside}}
+\index{isInside@{isInside}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{isInside()}{isInside()}}
+{\footnotesize\ttfamily bool Board\+::is\+Inside (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_position}{Position}}}]{position }\end{DoxyParamCaption})}
+
+
+
+is\+Inside Checks if a position is inside the board 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & The position to check \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the position is inside the board, false if not 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Tetris/metier/\mbox{\hyperlink{_board_8h}{Board.\+h}}\end{DoxyCompactItemize}

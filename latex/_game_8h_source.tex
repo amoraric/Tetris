@@ -1,0 +1,38 @@
+\doxysection{Game.\+h}
+\hypertarget{_game_8h_source}{}\label{_game_8h_source}\index{Tetris/metier/Game.h@{Tetris/metier/Game.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ GAME\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ GAME\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}GameState.h"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_board}{Board}};}
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_brick}{Brick}};}
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_direction}{Direction}};}
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_difficulty}{Difficulty}};}
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }Player;}
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_shapes}{Shapes}};}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_game}{Game}}\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ std::unique\_ptr<Board>\ board\_;}
+\DoxyCodeLine{00017\ \ \ \ \ std::unique\_ptr<Shapes>\ bag\_;}
+\DoxyCodeLine{00018\ \ \ \ \ std::unique\_ptr<Player>\ player\_;}
+\DoxyCodeLine{00019\ \ \ \ \ std::unique\_ptr<Brick>\ currentBrick\_;}
+\DoxyCodeLine{00020\ \ \ \ \ std::unique\_ptr<Difficulty>\ difficulty\_;}
+\DoxyCodeLine{00021\ \ \ \ \ GameState\ gameState\_;}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{int}\ currentTime\_;}
+\DoxyCodeLine{00023\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{class_game}{Game}}();}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ calculateScore();}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ update(\mbox{\hyperlink{class_direction}{Direction}}\ direction);}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{void}\ update(\textcolor{keywordtype}{bool}\ clockwise);}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ updateState(GameState\ state);}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{bool}\ isGameOver()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00030\ \};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ GAME\_H}}
+
+\end{DoxyCode}

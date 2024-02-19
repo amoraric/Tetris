@@ -5,6 +5,7 @@
 #include "Shape.h"
 #include "Position.h"
 /**
+ * @file Board.h
  * @brief The Board class represents the container where the bricks fall
  */
 class Board {
