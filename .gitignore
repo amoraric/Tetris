@@ -21,6 +21,12 @@
 # pas de dossier release
 release/
 
+# pas de dossier html
+html/
+
+# pas de dossier latex
+latex/
+
 # pas de dossier debug
 debug/
 
