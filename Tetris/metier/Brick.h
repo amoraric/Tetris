@@ -8,6 +8,11 @@
 #include "Board.h"
 #include "Direction.h"
 
+class Position;
+class Shape;
+class Board;
+class Direction;
+
 /**
  * @brief The Brick class represents a brick notably the current brick used in the game
  */
@@ -44,10 +49,34 @@ public:
      * @param clockwise If set at true rotates the brick clockwise
      */
     void rotation(bool clockwise);
+    /**
+     * @brief Checks if the brick can move in the specified direction.
+     * @param board The game board.
+     * @param dx The change in x-coordinate.
+     * @param dy The change in y-coordinate.
+     * @return True if the brick can move, false otherwise.
+     */
     bool canMove(const Board& board, int dx, int dy) const;
+    /**
+     * @brief Checks if the brick can rotate.
+     * @param board The game board.
+     * @return True if the brick can rotate, false otherwise.
+     */
     bool canRotate(const Board& board) const;
+    /**
+     * @brief Gets the state of the brick.
+     * @return The state of the brick.
+     */
     BrickState getBrickState();
+    /**
+     * @brief Gets the upper-left position of the brick.
+     * @return A unique pointer to the upper-left position of the brick.
+     */
     std::unique_ptr<Position> getUpperLeft();
+    /**
+     * @brief Gets the shape of the brick.
+     * @return A unique pointer to the shape of the brick.
+     */
     std::unique_ptr<Shape> getShape();
 };
 

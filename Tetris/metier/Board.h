@@ -4,6 +4,10 @@
 #include <vector>
 #include "Shape.h"
 #include "Position.h"
+
+class Shape;
+class Position;
+
 /**
  * @file Board.h
  * @brief The Board class represents the container where the bricks fall
@@ -30,8 +34,22 @@ public:
      * @brief clearLines clear the lines of the board
      */
     void clearLines();
+    /**
+     * @brief getCompletedLines Gets the indices of completed lines
+     * @return A vector containing the indices of completed lines
+     */
     std::vector<int> getCompletedLines();
-    void placeBrick(const Shape& shape, Position pos); // solidify the brick
+    /**
+     * @brief placeBrick Places a brick on the board
+     * @param shape The shape of the brick
+     * @param pos The position to place the brick
+     */
+    void placeBrick(const Shape& shape, Position pos);
+    /**
+     * @brief isOccupied Checks if a position on the board is occupied
+     * @param pos The position to check
+     * @return True if the position is occupied, false otherwise
+     */
     bool isOccupied(Position pos) const;
 };
 

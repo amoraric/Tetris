@@ -13,7 +13,6 @@ set(SOURCES
         Facade.h
         Difficulty.h
         Shape.h
-        Random.h
         Observable.h
         Observer.h
         main.cpp

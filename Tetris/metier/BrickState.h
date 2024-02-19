@@ -2,8 +2,12 @@
 #define BRICKSTATE_H
 
 /**
- * @brief The BrickState enum defines the states a brick can be in
+ * @brief Enumerates the possible states a brick can be in.
  */
-enum class BrickState{FREE, BLOCKED, ACCOMPLISHED};
+enum class BrickState {
+    FREE, /**< The brick is free to move. */
+    BLOCKED, /**< The brick is blocked and cannot move further. */
+    ACCOMPLISHED /**< The brick has accomplished its goal. */
+};
 
 #endif // BRICKSTATE_H

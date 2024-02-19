@@ -1,5 +1,6 @@
 #ifndef DIRECTION_H
 #define DIRECTION_H
+
 /**
  * @brief This class defines a Direction
  */
@@ -20,10 +21,27 @@ public:
      * @param y The vertical direction
      */
     Direction(int x, int y);
+    /**
+     * @brief Represents the left direction.
+     */
     static const Direction LEFT;
+    /**
+     * @brief Represents the down direction.
+     */
     static const Direction DOWN;
+    /**
+     * @brief Represents the right direction.
+     */
     static const Direction RIGHT;
+    /**
+     * @brief Gets the horizontal component of the direction.
+     * @return The horizontal component.
+     */
     int getDx() const;
+    /**
+     * @brief Gets the vertical component of the direction.
+     * @return The vertical component.
+     */
     int getDy() const;
 };
 
