@@ -7,12 +7,12 @@ set(SOURCES
         GameState.h
         Board.h
         Brick.h
-        Shapes.h
+        BrickBag.h
         Game.h
         Player.h
         Facade.h
         Difficulty.h
-        Shape.h
+        BrickModel.h
         Observable.h
         Observer.h
         main.cpp

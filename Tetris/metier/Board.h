@@ -2,7 +2,7 @@
 #define BOARD_H
 
 #include <vector>
-#include "Shape.h"
+#include "BrickModel.h"
 #include "Position.h"
 
 class BrickModel;

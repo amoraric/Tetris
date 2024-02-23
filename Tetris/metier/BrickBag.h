@@ -1,17 +1,17 @@
-#ifndef SHAPES_H
-#define SHAPES_H
+#ifndef BRICKBAG_H
+#define BRICKBAG_H
 
 #include <vector>
 
-#include "Shape.h"
+#include "BrickModel.h"
 
 class BrickModel;
 
 /**
  * @brief The Shapes class manages the shapes available in the game.
  */
-class Shapes {
-    std::vector<BrickModel> shapes_; /**< The list of shapes available. */
+class BrickBag {
+    std::vector<BrickModel> brickBag_; /**< The list of shapes available. */
 public:
     /**
      * @brief Constructor for the Shapes class.
@@ -22,13 +22,13 @@ public:
      * @param newShape The shape to add.
      * @return True if the shape is added successfully, false otherwise.
      */
-    bool addShape(const BrickModel& newShape);
+    bool addShape(const BrickModel& newBrick);
 };
 
 /**
  * @brief Namespace containing predefined static shapes.
  */
-namespace StaticShapes {
+namespace StaticBrickModels {
     extern const BrickModel T; /**< T shape. */
     extern const BrickModel L; /**< L shape. */
     extern const BrickModel I; /**< I shape. */
@@ -37,4 +37,4 @@ namespace StaticShapes {
     extern const BrickModel S; /**< S shape. */
     extern const BrickModel O; /**< O shape. */
 }
-#endif // SHAPES_H
+#endif // BRICKBAG_H

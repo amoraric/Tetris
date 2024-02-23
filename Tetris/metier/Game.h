@@ -8,7 +8,7 @@
 #include "Brick.h"
 #include "Direction.h"
 #include "Difficulty.h"
-#include "Shapes.h"
+#include "BrickBag.h"
 
 class Board;
 class Brick;

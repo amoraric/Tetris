@@ -4,7 +4,7 @@
 #include <memory>
 #include "BrickState.h"
 #include "Position.h"
-#include "Shape.h"
+#include "BrickModel.h"
 #include "Board.h"
 #include "Direction.h"
 
