@@ -32,15 +32,15 @@ public:
      */
     int getDy() const;
 
-
-
 };
+
+
 
 /**
  * @brief Namespace containing static Directions.
  */
 namespace StaticDirections {
-    extern const Direction LEFT;
+    extern const Direction LEFT ;
     extern const Direction DOWN;
     extern const Direction RIGHT;
 
