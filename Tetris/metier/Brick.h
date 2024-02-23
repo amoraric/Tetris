@@ -9,7 +9,7 @@
 #include "Direction.h"
 
 class Position;
-class Shape;
+class BrickModel;
 class Board;
 class Direction;
 
@@ -24,7 +24,7 @@ class Brick {
     /**
      * @brief shape_ The shape of the brick
      */
-    std::unique_ptr<Shape> shape_;
+    std::unique_ptr<BrickModel> shape_;
     /**
      * @brief upperLeft_ The upperLeft point of the brick
      */
@@ -38,7 +38,7 @@ public:
      * @brief Brick
      * @param s
      */
-    Brick(Shape s);
+    Brick(BrickModel s);
     /**
      * @brief Moves the brick to the left, right or down
      * @param direction The direction to move the brick to
@@ -77,7 +77,7 @@ public:
      * @brief Gets the shape of the brick.
      * @return A unique pointer to the shape of the brick.
      */
-    std::unique_ptr<Shape> getShape();
+    std::unique_ptr<BrickModel> getShape();
 };
 
 #endif // BRICK_H

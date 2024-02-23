@@ -5,7 +5,7 @@
 #include "Shape.h"
 #include "Position.h"
 
-class Shape;
+class BrickModel;
 class Position;
 
 /**
@@ -44,7 +44,7 @@ public:
      * @param shape The shape of the brick
      * @param pos The position to place the brick
      */
-    void placeBrick(const Shape& shape, Position pos);
+    void placeBrick(const BrickModel& shape, Position pos);
     /**
      * @brief isOccupied Checks if a position on the board is occupied
      * @param pos The position to check

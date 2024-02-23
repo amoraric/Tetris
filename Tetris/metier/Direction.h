@@ -22,18 +22,6 @@ public:
      */
     Direction(int x, int y);
     /**
-     * @brief Represents the left direction.
-     */
-    static const Direction LEFT;
-    /**
-     * @brief Represents the down direction.
-     */
-    static const Direction DOWN;
-    /**
-     * @brief Represents the right direction.
-     */
-    static const Direction RIGHT;
-    /**
      * @brief Gets the horizontal component of the direction.
      * @return The horizontal component.
      */
@@ -43,6 +31,17 @@ public:
      * @return The vertical component.
      */
     int getDy() const;
+
 };
+
+/**
+ * @brief Namespace containing static Directions.
+ */
+namespace StaticDirections {
+    extern const Direction LEFT;
+    extern const Direction DOWN;
+    extern const Direction RIGHT;
+
+}
 
 #endif // DIRECTION_H
