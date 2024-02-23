@@ -1,4 +1,6 @@
 #include <iostream>
+#include <Brick.h>
+#include <BrickModel.h>
 
 using namespace std;
 

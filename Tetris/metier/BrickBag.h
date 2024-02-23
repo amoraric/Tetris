@@ -16,13 +16,13 @@ public:
     /**
      * @brief Constructor for the Shapes class.
      */
-    Shapes();
+    BrickBag();
     /**
      * @brief Adds a new shape to the list of available shapes and checks if it is appropriate.
      * @param newShape The shape to add.
      * @return True if the shape is added successfully, false otherwise.
      */
-    bool addShape(const BrickModel& newBrick);
+    bool addBrick(const BrickModel& newBrick);
 };
 
 /**

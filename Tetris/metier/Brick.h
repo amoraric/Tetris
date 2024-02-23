@@ -40,11 +40,6 @@ public:
      */
     Brick(BrickModel s);
     /**
-     * @brief Moves the brick to the left, right or down
-     * @param direction The direction to move the brick to
-     */
-    void translation(Direction direction);
-    /**
      * @brief Rotates the brick clockwise or counterclockwise
      * @param clockwise If set at true rotates the brick clockwise
      */
@@ -78,6 +73,14 @@ public:
      * @return A unique pointer to the shape of the brick.
      */
     std::unique_ptr<BrickModel> getShape();
+
+    /**
+     * @brief Moves the brick to the left, right or down
+     * @param direction The direction to move the brick to
+     */
+    void operator+(Direction direction);
+
 };
+
 
 #endif // BRICK_H
