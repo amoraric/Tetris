@@ -6,6 +6,8 @@ set(SOURCES
         Position.cpp
 )
 
-add_executable(main ${SOURCES})
+add_executable(main ${SOURCES}
+    BrickBag.cpp
+    BrickModel.cpp)
 
 target_link_libraries(main metier)

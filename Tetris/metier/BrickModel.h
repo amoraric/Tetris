@@ -12,6 +12,7 @@ class Position;
  */
 struct BrickModel {
     std::vector<Position> model; /**< The positions that make up the shape. */
+    bool operator==(const BrickModel& other) const;
 };
 
 #endif // BRICKMODEL_H

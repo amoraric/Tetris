@@ -26,6 +26,10 @@ public:
      * @return The y-coordinate.
      */
     int get_y() const;
+
+    bool operator==(const Position& other) const;
 };
+
+bool comparePositions(const Position &pos1, const Position &pos2);
 
 #endif // POSITION_H
