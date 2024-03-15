@@ -2,6 +2,7 @@
 #include <iostream>
 #include "Brick.h"
 #include "BrickBag.h"
+#include "Difficulty.h"
 
 int main() {
     // Create some BrickModels
@@ -40,6 +41,9 @@ int main() {
     Board board {5, 2};
 
     std::cout << board.getBoard().size() << " : " << board.getBoard()[0].size() << std::endl;
+
+    Difficulty diff(1);
+    std::cout << diff.getMaxLines() << std::endl;
 
     return 0;
 }

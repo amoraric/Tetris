@@ -11,6 +11,7 @@ set(SOURCES
 )
 
 add_executable(main ${SOURCES}
+    Difficulty.cpp
 )
 
 target_link_libraries(main metier)

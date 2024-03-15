@@ -39,8 +39,8 @@ void Board::placeBrick(const BrickModel &brickModel, Position pos)
     if (!isInside(pos)) {
         return;
     }
-    for (Position brickPos : brickModel) {
-        board_[brickPos.get_x() + pos.get_x()][brickPos.get_y() + pos.get_y()] = true;
+    for (int i = 0; i < brickModel.model.size(); i++) {
+        board_[brickModel.model[i].get_x() + pos.get_x()][brickModel.model[i].get_y() + pos.get_y()] = true;
     }
 }
 

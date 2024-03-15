@@ -33,7 +33,7 @@ public:
     /**
      * @brief clearLines clears the lines of the board
      */
-    void clearLines();
+    void clearLines(std::vector<int> completedLines);
     /**
      * @brief getCompletedLines Gets the indices of completed lines
      * @return A vector containing the indices of completed lines
