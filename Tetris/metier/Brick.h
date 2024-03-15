@@ -24,7 +24,7 @@ class Brick {
     /**
      * @brief shape_ The shape of the brick
      */
-    std::unique_ptr<BrickModel> model_;
+    std::unique_ptr<BrickModel> brickModel_;
     /**
      * @brief upperLeft_ The upperLeft point of the brick
      */
@@ -73,7 +73,7 @@ public:
      * @brief Gets the shape of the brick.
      * @return A unique pointer to the shape of the brick.
      */
-    std::unique_ptr<BrickModel> getShape();
+    std::unique_ptr<BrickModel> getBrickModel();
 
     /**
      * @brief Moves the brick to the left, right or down

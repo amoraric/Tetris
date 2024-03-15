@@ -2,7 +2,7 @@
 #include "Direction.h"
 #include "Brick.h"
 
-Brick::Brick(BrickModel model, Board &board) : orientation_(0), model_(std::make_unique<BrickModel>(model)),
+Brick::Brick(BrickModel model, Board &board) : orientation_(0), brickModel_(std::make_unique<BrickModel>(model)),
     upperLeft_(std::make_unique<Position>(board.getSize()/2, 0)), state_(BrickState::FALLING) {}
 
 void Brick::rotation(bool clockwise)
@@ -18,8 +18,8 @@ bool Brick::canMove(Board &board, Direction direction)
 {
     auto currentBoard = board.getBoard();
     if (direction == StaticDirections::LEFT) {
-        for (int i = 0; i < this->model_->model.size(); i++) {
-            if (currentBoard[this->upperLeft_->get_x() + this->model_->model.at(i).get_x()-1][this->upperLeft_->get_y() + this->model_->model.at(i).get_y()]) {
+        for (int i = 0; i < this->brickModel_->model.size(); i++) {
+            if (currentBoard[this->upperLeft_->get_x() + this->brickModel_->model.at(i).get_x()-1][this->upperLeft_->get_y() + this->brickModel_->model.at(i).get_y()]) {
 
             }
         }
@@ -39,8 +39,8 @@ std::unique_ptr<Position> Brick::getUpperLeft() {
     return std::make_unique<Position>(*upperLeft_);
 }
 
-std::unique_ptr<BrickModel> Brick::getShape() {
-    return std::make_unique<BrickModel>(*model_);
+std::unique_ptr<BrickModel> Brick::getBrickModel() {
+    return std::make_unique<BrickModel>(*brickModel_);
 }
 
 void Brick::operator+(Direction direction)
