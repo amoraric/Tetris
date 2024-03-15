@@ -20,15 +20,23 @@ bool Brick::canMove(Board &board, Direction direction)
     if (direction == StaticDirections::LEFT) {
         for (int i = 0; i < this->brickModel_->model.size(); i++) {
             if (currentBoard[this->upperLeft_->get_x() + this->brickModel_->model.at(i).get_x()-1][this->upperLeft_->get_y() + this->brickModel_->model.at(i).get_y()]) {
-
+                return false;
             }
         }
     } else if (direction == StaticDirections::RIGHT) {
-
+        for (int i = 0; i < this->brickModel_->model.size(); i++) {
+            if (currentBoard[this->upperLeft_->get_x() + this->brickModel_->model.at(i).get_x()+1][this->upperLeft_->get_y() + this->brickModel_->model.at(i).get_y()]) {
+                return false;
+            }
+        }
     } else {
-
+        for (int i = 0; i < this->brickModel_->model.size(); i++) {
+            if (currentBoard[this->upperLeft_->get_x() + this->brickModel_->model.at(i).get_x()][this->upperLeft_->get_y() + this->brickModel_->model.at(i).get_y()+1]) {
+                return false;
+            }
+        }
     }
-
+    return true;
 }
 
 BrickState Brick::getBrickState() {

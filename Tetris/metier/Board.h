@@ -23,7 +23,7 @@ public:
      * @param rows Number of rows
      * @param columns Number of columns
      */
-    Board(int rows, int columns); // the user can ajust the side of the board
+    Board(size_t rows, size_t columns); // the user can ajust the side of the board
     /**
      * @brief isInside Checks if a position is inside the board
      * @param position The position to check
@@ -31,7 +31,7 @@ public:
      */
     bool isInside(Position position); // is the element inside the board so that it doesn't go out
     /**
-     * @brief clearLines clear the lines of the board
+     * @brief clearLines clears the lines of the board
      */
     void clearLines();
     /**
@@ -41,10 +41,10 @@ public:
     std::vector<int> getCompletedLines();
     /**
      * @brief placeBrick Places a brick on the board
-     * @param shape The shape of the brick
+     * @param shape The model of the brick
      * @param pos The position to place the brick
      */
-    void placeBrick(const BrickModel& shape, Position pos);
+    void placeBrick(const BrickModel& brickModel, Position pos);
     /**
      * @brief isOccupied Checks if a position on the board is occupied
      * @param pos The position to check
