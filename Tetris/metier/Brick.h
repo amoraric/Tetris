@@ -24,7 +24,7 @@ class Brick {
     /**
      * @brief shape_ The shape of the brick
      */
-    std::unique_ptr<BrickModel> shape_;
+    std::unique_ptr<BrickModel> model_;
     /**
      * @brief upperLeft_ The upperLeft point of the brick
      */
@@ -36,9 +36,10 @@ class Brick {
 public:
     /**
      * @brief Brick
-     * @param s
+     * @param model
+     * @param board
      */
-    Brick(BrickModel s);
+    Brick(BrickModel model, Board &board); // TODO: defendre ca avec le prof
     /**
      * @brief Rotates the brick clockwise or counterclockwise
      * @param clockwise If set at true rotates the brick clockwise

@@ -1,7 +1,9 @@
 #include <memory>
 #include "Direction.h"
+#include "Brick.h"
+#include "Board.h"
 
-Brick::Brick(BrickModel s, Board &board) : orientation_(0), shape_(std::make_unique<BrickModel>(s)),
+Brick::Brick(BrickModel model, Board &board) : orientation_(0), model_(std::make_unique<BrickModel>(model)),
     upperLeft_(std::make_unique<Position>(&board.board_.size()/2, 0)), state_(BrickState::FALLING) {}
 
 void Brick::rotation(bool clockwise)
