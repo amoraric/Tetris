@@ -31,27 +31,28 @@ bool Brick::canMove(Board &board, Direction direction)
 
 }
 
-bool Brick::canRotate(const Board &board) const
-{
-
+BrickState Brick::getBrickState() {
+    return state_;
 }
 
-BrickState Brick::getBrickState()
-{
-
+std::unique_ptr<Position> Brick::getUpperLeft() {
+    return std::make_unique<Position>(*upperLeft_);
 }
 
-std::unique_ptr<Position> Brick::getUpperLeft()
-{
-
-}
-
-std::unique_ptr<BrickModel> Brick::getShape()
-{
-
+std::unique_ptr<BrickModel> Brick::getShape() {
+    return std::make_unique<BrickModel>(*model_);
 }
 
 void Brick::operator+(Direction direction)
 {
+    int currentX = upperLeft_->get_x();
+    int currentY = upperLeft_->get_y();
 
+    int dx = direction.getDx();
+    int dy = direction.getDy();
+
+    currentX += dx;
+    currentY += dy;
+
+    upperLeft_ = std::make_unique<Position>(currentX, currentY);
 }
