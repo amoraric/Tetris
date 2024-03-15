@@ -31,7 +31,7 @@ public:
      * @return The vertical component.
      */
     int getDy() const;
-
+    bool operator==(const Direction& other) const;
 };
 
 

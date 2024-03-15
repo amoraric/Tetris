@@ -9,7 +9,8 @@ add_subdirectory(console)
 add_subdirectory(tests)
 add_subdirectory(gui)
 add_executable(Tetris main.cpp)
-set(CMAKE_CXX_FLAGS "-Wpedantic -Werror")
+set(CMAKE_CXX_FLAGS " ")
+# Werror - Wpedantic
 
 #include(GNUInstallDirs)
 #install(TARGETS Tetris

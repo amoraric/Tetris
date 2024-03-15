@@ -4,7 +4,7 @@
 #include "Board.h"
 
 Brick::Brick(BrickModel model, Board &board) : orientation_(0), model_(std::make_unique<BrickModel>(model)),
-    upperLeft_(std::make_unique<Position>(&board.board_.size()/2, 0)), state_(BrickState::FALLING) {}
+    upperLeft_(std::make_unique<Position>(board.getSize()/2, 0)), state_(BrickState::FALLING) {}
 
 void Brick::rotation(bool clockwise)
 {
@@ -17,9 +17,10 @@ void Brick::rotation(bool clockwise)
 
 bool Brick::canMove(const Board &board, Direction direction) const
 {
+    std::vector<std::vector<bool>> currentBoard = board.getBoard();
     if (direction == StaticDirections::LEFT) {
-        for (int i = 0; i < this->shape_.model_.size(); i++) {
-            if (board.board_[this->upperLeft_.getX() + this->shape_.model_.at(i).getDx()-1][this->upperLeft_.getY() + this->shape_.model_.at(i).getDy()]) {
+        for (int i = 0; i < this->model_->model.size(); i++) {
+            if (currentBoard[this->upperLeft_->get_x() + this->model_->model.at(i).get_x()-1][this->upperLeft_->get_y() + this->model_->model.at(i).get_y()]) {
 
             }
         }
@@ -28,6 +29,7 @@ bool Brick::canMove(const Board &board, Direction direction) const
     } else {
 
     }
+
 }
 
 bool Brick::canRotate(const Board &board) const

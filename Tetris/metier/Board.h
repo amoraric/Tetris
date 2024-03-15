@@ -51,6 +51,11 @@ public:
      * @return True if the position is occupied, false otherwise
      */
     bool isOccupied(Position pos) const;
+    /**
+     * TODO
+     */
+    int getSize();
+    std::vector<std::vector<bool>> getBoard() const;
 };
 
 #endif // BOARD_H

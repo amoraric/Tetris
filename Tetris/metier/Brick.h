@@ -52,7 +52,7 @@ public:
      * @param dy The change in y-coordinate.
      * @return True if the brick can move, false otherwise.
      */
-    bool canMove(const Board& board, int dx, int dy) const;
+    bool canMove(const Board& board, Direction direction) const;
     /**
      * @brief Checks if the brick can rotate.
      * @param board The game board.
