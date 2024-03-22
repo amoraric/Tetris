@@ -8,10 +8,12 @@ set(SOURCES
         BrickBag.cpp
         BrickModel.cpp
         Board.cpp
+        Difficulty.cpp
+        Player.cpp
+        Game.cpp
 )
 
-add_executable(main ${SOURCES}
-    Difficulty.cpp
+add_executable(main ${SOURCES}    
 )
 
 target_link_libraries(main metier)

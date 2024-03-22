@@ -23,6 +23,7 @@ public:
      * @return True if the shape is added successfully, false otherwise.
      */
     bool addBrick(const BrickModel& newBrick);
+    std::vector<BrickModel> getBrickBag();
 };
 
 /**

@@ -15,6 +15,10 @@ bool BrickBag::addBrick(const BrickModel& newBrick) {
     return true;
 }
 
+
+std::vector<BrickModel> getBrickBag(){
+
+}
 // 00 01 02 11
 
 // 01 10 11 12
