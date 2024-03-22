@@ -10,6 +10,7 @@
 #include "Difficulty.h"
 #include "BrickBag.h"
 
+
 class Board;
 class Brick;
 class Direction;
@@ -22,7 +23,7 @@ class Shapes;
  */
 class Game {
     std::unique_ptr<Board> board_; /**< The game board. */
-    std::unique_ptr<Shapes> bag_; /**< The bag of shapes. */
+    std::unique_ptr<BrickBag> bag_; /**< The bag of shapes. */
     std::unique_ptr<Player> player_; /**< The player. */
     std::unique_ptr<Brick> currentBrick_; /**< The current brick. */
     std::unique_ptr<Difficulty> difficulty_; /**< The game difficulty. */

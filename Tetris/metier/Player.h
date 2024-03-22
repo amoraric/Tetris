@@ -29,9 +29,4 @@ public:
     int getLinesCompleted();
 };
 
-inline int Player::getLinesCompleted()
-{
-
-}
-
 #endif // PLAYER_H
