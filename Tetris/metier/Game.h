@@ -9,14 +9,8 @@
 #include "Direction.h"
 #include "Difficulty.h"
 #include "BrickBag.h"
+#include "Player.h"
 
-
-class Board;
-class Brick;
-class Direction;
-class Difficulty;
-class Player;
-class Shapes;
 
 /**
  * @brief The Game class represents the game state and logic.

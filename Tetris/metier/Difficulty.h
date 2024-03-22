@@ -8,6 +8,7 @@ class Difficulty {
     int maxScore_; /**< The maximum score achievable in the game. */
     int maxLines_; /**< The maximum number of lines that can be cleared in the game. */
     int timeLimit_; /**< The time limit for the game. */
+    int level_;
 public:
     /**
      * @brief Constructor for the Difficulty class.
@@ -29,6 +30,10 @@ public:
      * @return The time limit in seconds.
      */
     int getTimeLimit();
+    void setLevel(int level);
+    int getLevel();
+    bool load();
+    bool nextDifficulty();
 };
 
 #endif // DIFFICULTY_H

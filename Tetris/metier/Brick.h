@@ -39,7 +39,7 @@ public:
      * @param model
      * @param board
      */
-    Brick(BrickModel model, std::unique_ptr<Board> board); // TODO: defendre ca avec le prof
+    Brick(BrickModel model, Board &board); // TODO: defendre ca avec le prof
     /**
      * @brief Rotates the brick clockwise or counterclockwise
      * @param clockwise If set at true rotates the brick clockwise

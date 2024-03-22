@@ -41,9 +41,17 @@ int main() {
     Board board {5, 2};
 
     std::cout << board.getBoard().size() << " : " << board.getBoard()[0].size() << std::endl;
+    try{
+        Difficulty diff(1);
+        std::cout << diff.getMaxLines() << std::endl;
 
-    Difficulty diff(1);
-    std::cout << diff.getMaxLines() << std::endl;
+    }
+    catch(std::exception e){
+        std::cout<< "game over";
+    }
+
+
+
 
     return 0;
 }
