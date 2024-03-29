@@ -38,7 +38,16 @@ int main() {
     std::cout << "Adding brick3 to bag: " << (bag.addBrick(brick3) ? "Success" : "Failed") << std::endl;
     std::cout << "Adding brick4 to bag: " << (bag.addBrick(brick4) ? "Success" : "Failed") << std::endl;
 
-    Board board {5, 2};
+    Board board {20, 10};
+    board.getBoard()[0][1] = true;
+    for (int var = 0; var < board.getSize(); ++var) {
+        for (int j = 0; j < board.getBoard()[0].size(); ++j) {
+            std::cout<<board.getBoard()[var][j];
+
+        }
+        std::cout<<std::endl;
+
+    }
 
     std::cout << board.getBoard().size() << " : " << board.getBoard()[0].size() << std::endl;
     try{

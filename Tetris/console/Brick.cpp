@@ -62,5 +62,5 @@ void Brick::operator+(Direction direction)
     currentX += dx;
     currentY += dy;
 
-    upperLeft_ = std::make_unique<Position>(currentX, currentY);
+    upperLeft_ = std::make_unique<Position>(currentX, currentY);    
 }

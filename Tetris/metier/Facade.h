@@ -7,6 +7,7 @@
 #include "Observable.h"
 #include "Game.h"
 #include "Direction.h"
+#include "Observer.h"
 
 class Game;
 class Direction;
@@ -26,7 +27,7 @@ public:
     /**
      * @brief Destructor for the Facade class.
      */
-    ~Facade();
+    ~Facade() override;
     /**
      * @brief Starts the game.
      */
@@ -71,6 +72,7 @@ public:
      * @brief Notifies all observers.
      */
     void notifyObservers() override;
+
 };
 
 #endif // FACADE_H

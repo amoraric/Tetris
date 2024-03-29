@@ -3,7 +3,7 @@
 #include <ctime>
 Game::Game() : gameState_{GameState::READY}, currentTime_{0}
 {
-    board_ =std::make_unique<Board>(5,10);
+    board_ =std::make_unique<Board>(20,10);
     bag_= std::make_unique<BrickBag>();
     difficulty_ = std::make_unique<Difficulty>(1);
     generate();
@@ -32,10 +32,34 @@ void Game::calculateScore()
 
 void Game::update(Direction direction)
 {
-
+   *currentBrick_+direction;
 }
 
 void Game::update(bool clockwise)
 {
-
+    currentBrick_->rotation(clockwise);
 }
+
+void Game::updateState(GameState state)
+{
+    this->gameState_ = state;
+}
+
+GameState Game::getGameState() const
+{
+    return this->gameState_;
+}
+
+void Game::drop()
+{
+    while(this->currentBrick_->canMove(*board_,StaticDirections::DOWN)){
+        update(StaticDirections::DOWN);
+    }
+}
+
+std::pair<Position, BrickModel> Game::getBrickDetails()
+{
+    return std::make_pair(*this->currentBrick_->getUpperLeft(),*this->currentBrick_->getBrickModel());
+}
+
+

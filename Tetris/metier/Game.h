@@ -56,6 +56,10 @@ public:
      * @return True if the game is over, false otherwise.
      */
     bool isGameOver() const;
+    GameState getState;
+    GameState getGameState() const;
+    void drop();
+    std::pair<Position,BrickModel> getBrickDetails();
 };
 
 #endif // GAME_H

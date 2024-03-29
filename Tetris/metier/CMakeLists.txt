@@ -15,6 +15,7 @@ set(SOURCES
         BrickModel.h
         Observable.h
         Observer.h
+        View.h
         main.cpp
 )
 

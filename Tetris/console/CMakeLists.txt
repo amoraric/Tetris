@@ -11,9 +11,12 @@ set(SOURCES
         Difficulty.cpp
         Player.cpp
         Game.cpp
+        View.cpp
+
 )
 
-add_executable(main ${SOURCES}    
+add_executable(main ${SOURCES}
+    Facade.cpp
 )
 
 target_link_libraries(main metier)

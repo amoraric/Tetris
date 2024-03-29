@@ -1,0 +1,78 @@
+#include "Facade.h"
+#include <algorithm>
+
+Facade::Facade() : game_{std::make_unique<Game>()}
+{
+}
+
+Facade::~Facade()
+{
+
+}
+
+void Facade::start()
+{
+    this->game_->updateState(GameState::READY);
+}
+
+void Facade::pause()
+{
+   if(this->game_->getState == GameState::READY){
+       this->game_->updateState(GameState::PAUSED);
+   }
+}
+
+void Facade::resume()
+{
+    if(this->game_->getState == GameState::READY){
+        this->game_->updateState(GameState::PAUSED);
+    }
+}
+
+void Facade::end()
+{
+    this->game_->updateState(GameState::FINISHED);
+    //arreter thread
+
+}
+
+void Facade::translation(Direction direction)
+{
+    if(game_->getState == GameState::READY){
+        this->game_->update(direction);
+    }
+}
+
+void Facade::rotation(bool clockwise)
+{
+    if(game_->getState == GameState::READY){
+        this->game_->update(clockwise);
+    }
+}
+
+void Facade::drop()
+{
+    this->game_->drop();
+}
+
+void Facade::addObserver(std::shared_ptr<Observer> observer)
+{
+  //  this->observers_.push_back(std::make_shared<Observer>(observer));
+}
+
+void Facade::removeObserver(std::shared_ptr<Observer> observer)
+{
+   observers_.erase(std::remove(this->observers_.begin(),this->observers_.end(),observer),observers_.end());
+}
+
+void Facade::notifyObservers()
+{
+    for (auto o : observers_) {
+       o->update();
+    }
+}
+
+std::pair<Position, BrickModel> Facade::getBrickDetails()
+{
+    return this->game_->getBrickDetails();
+}
