@@ -58,6 +58,7 @@ void Facade::drop()
 void Facade::addObserver(std::shared_ptr<Observer> observer)
 {
   //  this->observers_.push_back(std::make_shared<Observer>(observer));
+    observers_.insert(observer);
 }
 
 void Facade::removeObserver(std::shared_ptr<Observer> observer)
