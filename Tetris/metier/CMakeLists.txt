@@ -16,6 +16,8 @@ set(SOURCES
         Observable.h
         Observer.h
         View.h
+        Controller.h
+        UserActions.h
         main.cpp
 )
 

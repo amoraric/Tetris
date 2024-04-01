@@ -9,9 +9,7 @@
 #include "Direction.h"
 #include "Observer.h"
 
-class Game;
-class Direction;
-class Observable;
+
 
 /**
  * @brief The Facade class provides a simplified interface to interact with the game.
@@ -23,7 +21,7 @@ public:
     /**
      * @brief Constructor for the Facade class.
      */
-    Facade();
+    Facade(std::string nickname, int level);
     /**
      * @brief Destructor for the Facade class.
      */
@@ -72,7 +70,11 @@ public:
      * @brief Notifies all observers.
      */
     void notifyObservers() override;
+    std::pair<Position, BrickModel> getBrickDetails();
+    bool isGameOver();
 
+
+    Game*game() const;
 };
 
 #endif // FACADE_H

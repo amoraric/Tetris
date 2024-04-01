@@ -5,10 +5,11 @@
 
 class View {
 public:
-    void welcome();
-    void display(Board board, Position p, BrickModel b);
-    std::pair<std::string,int> configure();
-    void gameOver();
+    static void welcome();
+    static void display(Board board, Position p, BrickModel b);
+    static std::pair<std::string,int> configure();
+    static void gameOver();
+    static std::string askAction();
 };
 
 #endif // VIEW_H

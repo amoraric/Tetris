@@ -19,12 +19,20 @@ void View::display(Board board, Position p, BrickModel b)
     }
     for (int i = 0; i < board.getSize(); ++i) {
         for (int j = 0; j < board.getBoard()[0].size(); ++j) {
-            if(p.get_x() == i && p.get_y() == j){
-                cout<<"x";
+            for (int var = 0; var < v.size(); ++var) {
+                if(i == v[var].get_x() && j == v[var].get_y()){
+                    cout<<"x";
+                    v.erase(v.begin()+var);
+                    break;
+                }
+            }
+            if(board.getBoard()[i][j]){
+                cout<<"o";
             }
             else{
-                std::cout<<board.getBoard()[i][j];
+                 cout<<"_";
             }
+
         }
         std::cout<<std::endl;
     }
@@ -45,4 +53,10 @@ void View::gameOver()
 {
     cout<<"Game Over"<<endl;
     //print player data
+}
+std::string View::askAction()
+{
+    std::string action;
+    cin>>action;
+    return action;
 }

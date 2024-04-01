@@ -27,7 +27,7 @@ public:
     /**
      * @brief Constructor for the Game class.
      */
-    Game();
+    Game(std::string nickname, int level);
     /**
      * @brief Generates a new shape on the board.
      */
@@ -60,6 +60,7 @@ public:
     GameState getGameState() const;
     void drop();
     std::pair<Position,BrickModel> getBrickDetails();
+    Board*board() const;
 };
 
 #endif // GAME_H

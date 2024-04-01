@@ -13,10 +13,10 @@ set(SOURCES
         Game.cpp
         View.cpp
         Facade.cpp
+        Controller.cpp
 )
 
 add_executable(main ${SOURCES}
-    Facade.cpp
 )
 
 target_link_libraries(main metier)

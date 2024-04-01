@@ -1,33 +1,36 @@
 #include "Facade.h"
 #include <algorithm>
 
-Facade::Facade() : game_{std::make_unique<Game>()}
+Game*Facade::game() const
 {
+    return game_.get();
 }
+
+Facade::Facade(std::string nickname, int level) : game_{std::make_unique<Game>(nickname,level)}
+{}
 
 Facade::~Facade()
-{
+{}
 
-}
+//void Facade::start()
+//{
+//    this->game_->updateState(GameState::READY);
 
-void Facade::start()
-{
-    this->game_->updateState(GameState::READY);
-}
+//}
 
-void Facade::pause()
-{
-   if(this->game_->getState == GameState::READY){
-       this->game_->updateState(GameState::PAUSED);
-   }
-}
+//void Facade::pause()
+//{
+//   if(this->game_->getState == GameState::READY){
+//       this->game_->updateState(GameState::PAUSED);
+//   }
+//}
 
-void Facade::resume()
-{
-    if(this->game_->getState == GameState::READY){
-        this->game_->updateState(GameState::PAUSED);
-    }
-}
+//void Facade::resume()
+//{
+//    if(this->game_->getState == GameState::READY){
+//        this->game_->updateState(GameState::PAUSED);
+//    }
+//}
 
 void Facade::end()
 {
@@ -40,6 +43,7 @@ void Facade::translation(Direction direction)
 {
     if(game_->getState == GameState::READY){
         this->game_->update(direction);
+        notifyObservers();
     }
 }
 
@@ -47,12 +51,16 @@ void Facade::rotation(bool clockwise)
 {
     if(game_->getState == GameState::READY){
         this->game_->update(clockwise);
+        notifyObservers();
     }
 }
 
 void Facade::drop()
 {
-    this->game_->drop();
+    if(game_->getState == GameState::READY){
+        this->game_->drop();
+        notifyObservers();
+    }
 }
 
 void Facade::addObserver(std::shared_ptr<Observer> observer)
@@ -78,3 +86,10 @@ std::pair<Position, BrickModel> Facade::getBrickDetails()
 {
     return this->game_->getBrickDetails();
 }
+
+bool Facade::isGameOver()
+{
+    return game_->getGameState() == GameState::FINISHED;
+}
+
+

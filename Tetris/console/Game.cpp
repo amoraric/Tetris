@@ -1,11 +1,17 @@
 #include "Game.h"
 #include <cstdlib>
 #include <ctime>
-Game::Game() : gameState_{GameState::READY}, currentTime_{0}
+Board*Game::board() const
+{
+    return board_.get();
+}
+
+Game::Game(std::string nickname, int level) : gameState_{GameState::READY}, currentTime_{0}
 {
     board_ =std::make_unique<Board>(20,10);
     bag_= std::make_unique<BrickBag>();
-    difficulty_ = std::make_unique<Difficulty>(1);
+    difficulty_ = std::make_unique<Difficulty>(level);
+    player_ = std::make_unique<Player>(nickname);
     generate();
 }
 
