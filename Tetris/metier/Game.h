@@ -40,7 +40,7 @@ public:
      * @brief Updates the game state based on the direction of movement.
      * @param direction The direction of movement.
      */
-    void update(Direction direction);
+    bool update(Direction direction);
     /**
      * @brief Updates the game state based on the rotation direction.
      * @param clockwise If true, rotates the current brick clockwise; otherwise, counterclockwise.

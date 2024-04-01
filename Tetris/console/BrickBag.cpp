@@ -1,6 +1,14 @@
 #include "BrickBag.h"
 
-BrickBag::BrickBag() {}
+BrickBag::BrickBag() {
+    // brickBag_.push_back(StaticBrickModels::T);
+    // brickBag_.push_back(StaticBrickModels::L);
+    // brickBag_.push_back(StaticBrickModels::I);
+    // brickBag_.push_back(StaticBrickModels::J);
+    // brickBag_.push_back(StaticBrickModels::Z);
+    // brickBag_.push_back(StaticBrickModels::S);
+    brickBag_.push_back(StaticBrickModels::O);
+}
 
 bool BrickBag::addBrick(const BrickModel& newBrick) {
     if (newBrick.model.size() != 4) {
@@ -20,8 +28,7 @@ std::vector<BrickModel> BrickBag::getBrickBag()
     return brickBag_;
 }
 
-
-
-// 00 01 02 11
-
-// 01 10 11 12
+void BrickBag::eraseBrickIndex(int index)
+{
+    brickBag_.erase(brickBag_.begin() + index);
+}

@@ -3,6 +3,7 @@
 #include "Brick.h"
 #include "BrickBag.h"
 #include "Difficulty.h"
+#include "Controller.h"
 
 int main() {
     // Create some BrickModels
@@ -60,7 +61,11 @@ int main() {
     }
 
 
+    // Controller c;
+    // c.start();
 
+    auto cc = std::make_shared<Controller>();
+    cc->start();
 
     return 0;
 }

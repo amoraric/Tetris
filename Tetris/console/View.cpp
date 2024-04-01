@@ -1,36 +1,35 @@
 #include "View.h"
 #include <iostream>
 
-using namespace std;
-
-
 void View::welcome()
 {
-   cout<<"Welcome to Tetris"<<endl;
+   std::cout<<"Welcome to Tetris"<<std::endl;
 }
 
 void View::display(Board board, Position p, BrickModel b)
 {
-    vector<Position> v {};
-    v.push_back(p);
-    for (int var = 1; var < b.model.size(); ++var) {
+    std::vector<Position> v {};
+    for (int var = 0; var < b.model.size(); ++var) {
         v.push_back({b.model[var].get_x()+p.get_x(),b.model[var].get_y()+p.get_y()});
 
     }
+    std::cout << board.getSize() << std::endl;
     for (int i = 0; i < board.getSize(); ++i) {
         for (int j = 0; j < board.getBoard()[0].size(); ++j) {
+            bool written = false;
             for (int var = 0; var < v.size(); ++var) {
                 if(i == v[var].get_x() && j == v[var].get_y()){
-                    cout<<"x";
+                    std::cout<<"x";
                     v.erase(v.begin()+var);
+                    written = true;
                     break;
                 }
             }
-            if(board.getBoard()[i][j]){
-                cout<<"o";
+            if(board.getBoard()[i][j] && !written){
+                std::cout<<"o";
             }
-            else{
-                 cout<<"_";
+            else if (!board.getBoard()[i][j] && !written){
+                std::cout<<"_";
             }
 
         }
@@ -40,23 +39,30 @@ void View::display(Board board, Position p, BrickModel b)
 
 std::pair<std::string,int> View::configure()
 {
-    cout<<"Enter your nickname"<<endl;
+    std::cout << "Enter your nickname: ";
     std::string nickname;
-    cin>>nickname;
+    std::cin >> nickname;
+
+    std::cout << "Enter your level (an integer): ";
     int level;
-    cin >> level;
-    cout<<"Choose your level"<<endl;
-    return std::make_pair(nickname,level);
+    while (!(std::cin >> level)) { // Input validation loop
+        std::cin.clear(); // Clear error flags
+        std::cout << "Invalid input. Please enter an integer for the level: ";
+    }
+
+    return std::make_pair(nickname, level);
 }
 
 void View::gameOver()
 {
-    cout<<"Game Over"<<endl;
+    std::cout<<"Game Over"<<std::endl;
     //print player data
 }
 std::string View::askAction()
 {
+    std::cout << "Enter an action: ";
     std::string action;
-    cin>>action;
+    std::cin>>action;
+    std::cout << std::endl;
     return action;
 }

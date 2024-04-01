@@ -3,7 +3,7 @@
 #include "Brick.h"
 
 Brick::Brick(BrickModel model, Board &board) : orientation_(0), brickModel_(std::make_unique<BrickModel>(model)),
-    upperLeft_(std::make_unique<Position>(board.getSize()/2, 0)), state_(BrickState::FALLING) {}
+    upperLeft_(std::make_unique<Position>(0, board.getBoard()[0].size()/2)), state_(BrickState::FALLING) {}
 
 void Brick::rotation(bool clockwise)
 {

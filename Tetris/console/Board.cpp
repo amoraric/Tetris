@@ -1,11 +1,12 @@
 #include "Board.h"
+#include <iostream>
 using namespace std;
 Board::Board(size_t rows, size_t columns) : board_{rows, std::vector<bool>(columns, false)} {}
 
 bool Board::isInside(Position position)
 {
     return position.get_x() >= 0 && position.get_x() < board_.size()
-           && position.get_y() >= 0 && position.get_y() <= board_[0].size();
+           && position.get_y() >= 0 && position.get_y() < board_[0].size();
 }
 
 void Board::clearLines(std::vector<int> completedLines)
@@ -46,6 +47,7 @@ void Board::placeBrick(const BrickModel &brickModel, Position pos)
 
 bool Board::isOccupied(Position pos) const
 {
+    std::cout << board_[pos.get_x()][pos.get_y()] << std::endl;
     return board_[pos.get_x()][pos.get_y()];
 }
 

@@ -43,7 +43,6 @@ namespace StaticDirections {
     extern const Direction LEFT ;
     extern const Direction DOWN;
     extern const Direction RIGHT;
-
 }
 
 #endif // DIRECTION_H

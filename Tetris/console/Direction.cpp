@@ -19,7 +19,7 @@ bool Direction::operator==(const Direction& other) const {
 }
 
 namespace StaticDirections{
-    const Direction LEFT{-1,0};
-    const Direction RIGHT{1,0};
-    const Direction DOWN{0,-1};
+    const Direction LEFT{0,-1};
+    const Direction RIGHT{0,1};
+    const Direction DOWN{1,0};
 }

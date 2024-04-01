@@ -20,7 +20,7 @@ Difficulty::Difficulty(int level)
 
         file.close();
     } else {
-        std::cerr << "Game over" << std::endl;
+        std::cerr << "File can't be open" << std::endl;
     }
 }
 

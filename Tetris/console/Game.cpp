@@ -1,6 +1,8 @@
 #include "Game.h"
 #include <cstdlib>
 #include <ctime>
+#include <iostream>
+
 Board*Game::board() const
 {
     return board_.get();
@@ -17,9 +19,27 @@ Game::Game(std::string nickname, int level) : gameState_{GameState::READY}, curr
 
 void Game::generate()
 {
+    if (bag_->getBrickBag().size() == 0) {
+        bag_= std::make_unique<BrickBag>();
+    }
+
     std::srand(static_cast<unsigned int>(std::time(nullptr)));
     int randomIndex = std::rand() % bag_->getBrickBag().size();
     auto model = bag_->getBrickBag()[randomIndex];
+    bag_->eraseBrickIndex(randomIndex);
+
+    Position upperLeft {0, (int) board_->getBoard()[0].size()/2};
+    std::vector<Position> v {};
+    for (int var = 0; var < model.model.size(); ++var) {
+        v.push_back({model.model[var].get_x()+upperLeft.get_x(),model.model[var].get_y()+upperLeft.get_y()});
+    }
+    for (auto vv : v) {
+        if (this->board_->isOccupied(vv)) {
+            updateState(GameState::FINISHED);
+            return;
+        }
+    }
+
     currentBrick_ = std::make_unique<Brick>(model,*board_);
 }
 
@@ -36,9 +56,36 @@ void Game::calculateScore()
     }
 }
 
-void Game::update(Direction direction)
+bool Game::update(Direction direction)
 {
-   *currentBrick_+direction;
+    auto upperLeft = currentBrick_->getUpperLeft();
+    auto model = currentBrick_->getBrickModel()->model;
+    std::vector<Position> v {};
+    for (int var = 0; var < model.size(); ++var) {
+        v.push_back({model[var].get_x()+upperLeft->get_x()+direction.getDx(),model[var].get_y()+upperLeft->get_y() + direction.getDy()});
+        std::cout << model[var].get_x()+upperLeft->get_x()+direction.getDx() << ":" << model[var].get_y()+upperLeft->get_y() + direction.getDy() << std::endl;
+    }
+    for (auto vv : v) {
+        if (direction == StaticDirections::DOWN && (vv.get_x() == 20 ||
+                                                    this->board_->isOccupied(vv))) {
+            this->board_->placeBrick(*currentBrick_->getBrickModel(), *upperLeft);
+            if (upperLeft->get_x() == 0) {
+                updateState(GameState::FINISHED);
+                Direction dir {-5, -5};
+                *currentBrick_+dir;
+            }
+            if (this->gameState_ != GameState::FINISHED) {
+                generate();
+            }
+
+            return false;
+        }
+        else if (!this->board_->isInside(vv)) {
+            return false;
+        }
+    }
+    *currentBrick_+direction;
+    return true;
 }
 
 void Game::update(bool clockwise)
@@ -58,9 +105,9 @@ GameState Game::getGameState() const
 
 void Game::drop()
 {
-    while(this->currentBrick_->canMove(*board_,StaticDirections::DOWN)){
-        update(StaticDirections::DOWN);
+    while (update(StaticDirections::DOWN)) {
     }
+
 }
 
 std::pair<Position, BrickModel> Game::getBrickDetails()

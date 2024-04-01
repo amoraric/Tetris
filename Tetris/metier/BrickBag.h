@@ -24,18 +24,20 @@ public:
      */
     bool addBrick(const BrickModel& newBrick);
     std::vector<BrickModel> getBrickBag();
+    void eraseBrickIndex(int index);
 };
 
 /**
  * @brief Namespace containing predefined static shapes.
  */
 namespace StaticBrickModels {
-    extern const BrickModel T; /**< T shape. */
-    extern const BrickModel L; /**< L shape. */
-    extern const BrickModel I; /**< I shape. */
-    extern const BrickModel J; /**< J shape. */
-    extern const BrickModel Z; /**< Z shape. */
-    extern const BrickModel S; /**< S shape. */
-    extern const BrickModel O; /**< O shape. */
+    const BrickModel T {{ {0, 1}, {1, 0}, {1, 1}, {1, 2} }}; /**< T shape. */
+    const BrickModel L {{ {0, 0}, {1, 0}, {2, 0}, {2, 1} }}; /**< L shape. */
+    const BrickModel I {{ {0, 0}, {1, 0}, {2, 0}, {3, 0} }}; /**< I shape. */
+    const BrickModel J {{ {0, 1}, {1, 1}, {2, 1}, {2, 0} }}; /**< J shape. */
+    const BrickModel Z {{ {0, 0}, {0, 1}, {1, 1}, {1, 2} }}; /**< Z shape. */
+    const BrickModel S {{ {0, 1}, {0, 2}, {1, 0}, {1, 1} }}; /**< S shape. */
+    const BrickModel O {{ {0, 0}, {1, 0}, {0, 1}, {1, 1} }}; /**< O shape. */
 }
+
 #endif // BRICKBAG_H
