@@ -26,18 +26,18 @@ public:
      * @brief Destructor for the Facade class.
      */
     ~Facade() override;
-    /**
-     * @brief Starts the game.
-     */
-    void start();
-    /**
-     * @brief Pauses the game.
-     */
-    void pause();
-    /**
-     * @brief Resumes the game.
-     */
-    void resume();
+    // /**
+    //  * @brief Starts the game.
+    //  */
+    // void start();
+    // /**
+    //  * @brief Pauses the game.
+    //  */
+    // void pause();
+    // /**
+    //  * @brief Resumes the game.
+    //  */
+    // void resume();
     /**
      * @brief Ends the game.
      */

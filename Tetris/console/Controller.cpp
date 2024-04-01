@@ -1,12 +1,14 @@
 #include "Controller.h"
 #include "view.h"
+#include "Observer.h"
 
 void Controller::start()
 {
     View::welcome();
     auto configuration {View::configure()};
     facade_ = std::make_unique<Facade>(configuration.first,configuration.second);
-    this->facade_->addObserver(std::make_shared<Observer>(this));
+    // this->facade_->addObserver(std::make_shared<Controller>(this));
+    facade_->addObserver(shared_from_this());
     while(!this->facade_->isGameOver()){
        auto userAction {View::askAction()};
        if(userAction == "r"){
