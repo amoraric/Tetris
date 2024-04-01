@@ -12,7 +12,7 @@ set(SOURCES
         Player.cpp
         Game.cpp
         View.cpp
-
+        Facade.cpp
 )
 
 add_executable(main ${SOURCES}

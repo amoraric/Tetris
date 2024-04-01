@@ -62,7 +62,8 @@ void Facade::addObserver(std::shared_ptr<Observer> observer)
 
 void Facade::removeObserver(std::shared_ptr<Observer> observer)
 {
-   observers_.erase(std::remove(this->observers_.begin(),this->observers_.end(),observer),observers_.end());
+   // observers_.erase(std::remove(this->observers_.begin(),this->observers_.end(),observer),observers_.end());
+    observers_.erase(observer);
 }
 
 void Facade::notifyObservers()

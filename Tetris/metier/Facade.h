@@ -2,7 +2,7 @@
 #define FACADE_H
 
 #include <memory>
-#include <vector>
+#include <set>
 
 #include "Observable.h"
 #include "Game.h"
@@ -18,7 +18,7 @@ class Observable;
  */
 class Facade : public Observable {
     std::unique_ptr<Game> game_; /**< The game instance. */
-    std::vector<std::shared_ptr<Observer>> observers_; /**< List of observers. */
+    std::set<std::shared_ptr<Observer>> observers_; /**< List of observers. */
 public:
     /**
      * @brief Constructor for the Facade class.
