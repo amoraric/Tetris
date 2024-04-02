@@ -1,5 +1,5 @@
 #include "Controller.h"
-#include "view.h"
+#include "View.h"
 #include "Observer.h"
 
 void Controller::start()
