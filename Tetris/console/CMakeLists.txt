@@ -16,7 +16,7 @@ set(SOURCES
         Controller.cpp
 )
 
-add_executable(main ${SOURCES}
+add_executable(aba_cons ${SOURCES}
 )
 
-target_link_libraries(main metier)
+target_link_libraries(aba_cons metier)

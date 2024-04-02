@@ -47,7 +47,12 @@ void Controller::start()
 
 void Controller::update()
 {
-    auto board {facade_->game()->board()};
-    auto brickDetails {facade_->game()->getBrickDetails()};
-    View::display(*board,brickDetails.first,brickDetails.second);
+    if(!this->facade_->isGameOver()){
+        auto board {facade_->game()->board()};
+        auto brickDetails {facade_->game()->getBrickDetails()};
+        View::display(*board,brickDetails.first,brickDetails.second);
+    }
+    else{
+        View::gameOver();
+    }
 }

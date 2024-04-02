@@ -73,9 +73,6 @@ bool Game::update(Direction direction)
                 Direction dir {-5, -5};
                 *currentBrick_+dir;
             }
-            if (this->gameState_ != GameState::FINISHED) {
-                generate();
-            }
 
             auto linesCompleted = this->board_->getCompletedLines();
             this->board_->clearLines(linesCompleted);
@@ -87,7 +84,16 @@ bool Game::update(Direction direction)
             if (this->player_->getLinesCompleted() % 10 == 0 && this->player_->getLinesCompleted() != 0) {
                 this->difficulty_->nextDifficulty();
             }
-
+            if(this->player_->getScore() >= this->difficulty_->getMaxScore() || this->player_->getLinesCompleted() >= this->difficulty_->getMaxLines()){
+                   this->updateState(GameState::FINISHED);
+            }
+            if (this->gameState_ != GameState::FINISHED) {
+                generate();
+            }
+            else{
+                Direction dir {-100, -100};
+                *currentBrick_+dir;
+            }
             return false;
         }
         else if (!this->board_->isInside(vv)) {
