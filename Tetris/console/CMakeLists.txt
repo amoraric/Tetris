@@ -19,4 +19,4 @@ set(SOURCES
 add_executable(aba_cons ${SOURCES}
 )
 
-target_link_libraries(aba_cons metier)
+target_include_directories(aba_cons PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../metier)
