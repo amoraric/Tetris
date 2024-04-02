@@ -63,7 +63,6 @@ bool Game::update(Direction direction)
     std::vector<Position> v {};
     for (int var = 0; var < model.size(); ++var) {
         v.push_back({model[var].get_x()+upperLeft->get_x()+direction.getDx(),model[var].get_y()+upperLeft->get_y() + direction.getDy()});
-        std::cout << model[var].get_x()+upperLeft->get_x()+direction.getDx() << ":" << model[var].get_y()+upperLeft->get_y() + direction.getDy() << std::endl;
     }
     for (auto vv : v) {
         if (direction == StaticDirections::DOWN && (vv.get_x() == 20 ||
@@ -78,6 +77,17 @@ bool Game::update(Direction direction)
                 generate();
             }
 
+            auto linesCompleted = this->board_->getCompletedLines();
+            this->board_->clearLines(linesCompleted);
+            int numberLinesCompleted = linesCompleted.size();
+            std::cout << "stats:" << numberLinesCompleted << ":" << difficulty_->getLevel() << ":" << vv.get_x() << std::endl;
+            this->player_->increaseScore(numberLinesCompleted, difficulty_->getLevel(), vv.get_x());
+            this->player_->increaseLinesCount(numberLinesCompleted);
+
+            if (this->player_->getLinesCompleted() % 10 == 0 && this->player_->getLinesCompleted() != 0) {
+                this->difficulty_->nextDifficulty();
+            }
+
             return false;
         }
         else if (!this->board_->isInside(vv)) {
@@ -85,6 +95,7 @@ bool Game::update(Direction direction)
         }
     }
     *currentBrick_+direction;
+
     return true;
 }
 
@@ -115,4 +126,11 @@ std::pair<Position, BrickModel> Game::getBrickDetails()
     return std::make_pair(*this->currentBrick_->getUpperLeft(),*this->currentBrick_->getBrickModel());
 }
 
+int Game::getScore() {
+    return this->player_->getScore();
+}
+
+int Game::getLinesCompleted() {
+    return this->player_->getLinesCompleted();
+}
 

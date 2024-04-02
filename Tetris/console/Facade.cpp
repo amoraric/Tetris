@@ -92,4 +92,15 @@ bool Facade::isGameOver()
     return game_->getGameState() == GameState::FINISHED;
 }
 
+int Facade::getScore()
+{
+    return this->game_->getScore();
+}
+
+int Facade::getLinesCompleted()
+{
+    return this->game_->getLinesCompleted();
+}
+
+
 

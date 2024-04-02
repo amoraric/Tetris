@@ -13,17 +13,17 @@ void Board::clearLines(std::vector<int> completedLines)
 {
     for (int i : completedLines) {
         board_.erase(board_.begin() + i);
-        board_.insert(board_.begin(), std::vector<bool>(board_.size(), false));
+        board_.insert(board_.begin(), std::vector<bool>(board_[0].size(), false));
     }
 }
 
 std::vector<int> Board::getCompletedLines()
 {
     std::vector<int> completedLines;
-    for (int i = 0; i < board_[0].size(); i++) {
-        for (int j = 0; j < board_.size(); j++) {
+    for (int i = 0; i < board_.size(); i++) {
+        for (int j = 0; j < board_[0].size(); j++) {
             if (board_[i][j]) {
-                if (j == board_.size()-1) {
+                if (j == board_[0].size()-1) {
                     completedLines.push_back(i);
                 }
             } else {
@@ -47,7 +47,6 @@ void Board::placeBrick(const BrickModel &brickModel, Position pos)
 
 bool Board::isOccupied(Position pos) const
 {
-    std::cout << board_[pos.get_x()][pos.get_y()] << std::endl;
     return board_[pos.get_x()][pos.get_y()];
 }
 

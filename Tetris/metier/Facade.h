@@ -72,7 +72,8 @@ public:
     void notifyObservers() override;
     std::pair<Position, BrickModel> getBrickDetails();
     bool isGameOver();
-
+    int getScore();
+    int getLinesCompleted();
 
     Game*game() const;
 };

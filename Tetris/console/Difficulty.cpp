@@ -5,6 +5,7 @@
 
 Difficulty::Difficulty(int level)
 {
+    this->level_ = level;
     std::string filename = "./difficulties/" + std::to_string(level) + ".txt";
     std::ifstream file(filename);
     std::string fileLine;

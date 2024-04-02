@@ -66,3 +66,10 @@ std::string View::askAction()
     std::cout << std::endl;
     return action;
 }
+
+void View::showStats(std::string nickname, int level, int score, int linesCompleted) {
+    std::cout << "Player " << nickname << " has :" << std::endl;
+    std::cout << "Level : " << level << std::endl;
+    std::cout << "Score : " << score << std::endl;
+    std::cout << "Lines Completed : " << linesCompleted << std::endl;
+}

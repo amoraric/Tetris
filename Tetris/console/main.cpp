@@ -60,7 +60,6 @@ int main() {
         std::cout<< "game over";
     }
 
-
     // Controller c;
     // c.start();
 

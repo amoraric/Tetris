@@ -61,6 +61,8 @@ public:
     void drop();
     std::pair<Position,BrickModel> getBrickDetails();
     Board*board() const;
+    int getScore();
+    int getLinesCompleted();
 };
 
 #endif // GAME_H
