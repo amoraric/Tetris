@@ -7,7 +7,7 @@
 #include "Player.h"
 #include "Brick.h"
 #include "Board.h"
-#include <iostream>
+#include "Game.h"
 // Tests For Class Position
 TEST_CASE("The 2 positions are identical", "[Positions identical]") {
     Position p1(1, 2);
@@ -114,7 +114,7 @@ TEST_CASE("Randomize leaves no lines", "[Randomize clears lines]") {
 //====================================================================
 
 //Tests For player
-TEST_CASE("Scored increased properly", "[Score increase]") {
+TEST_CASE("Score increased properly", "[Score increase]") {
     Player p {"whatever"};
     p.increaseScore(0,2,8);
     REQUIRE(p.getScore() == 16);
@@ -122,4 +122,31 @@ TEST_CASE("Scored increased properly", "[Score increase]") {
 }
 //==========================================================
 
+//Tests For Game
+TEST_CASE("Can not generate twice the same brick", "[Generate twice]") {
+    Game game {"whatever",1};
+    game.generate();
+    auto b1 {game.getBrickDetails().second};
+    game.generate();
+    auto b2 {game.getBrickDetails().second};
+    REQUIRE_FALSE(b1 == b2);
+}
 
+TEST_CASE("Update Left", "[Update Left]") {
+    Game game {"whatever",1};
+    game.update(StaticDirections::LEFT);
+    REQUIRE(game.board()->getBoard()[0][9]);
+//}
+//TEST_CASE("Update Right", "[Update Right]") {
+//    Game game {"whatever",1};
+//    game.update(StaticDirections::RIGHT);
+//    REQUIRE(game.board()->getBoard()[0][11]);
+//}
+//TEST_CASE("Update Down", "[Update Right]") {
+//    Game game {"whatever",1};
+//    game.update(StaticDirections::DOWN);
+//    REQUIRE(game.board()->getBoard()[1][10]);
+//}
+
+
+}
