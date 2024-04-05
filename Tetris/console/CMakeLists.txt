@@ -1,7 +1,7 @@
 project(console)
 
 set(SOURCES
-        main.cpp
+    main.cpp
         Direction.cpp
         Position.cpp
         Brick.cpp
