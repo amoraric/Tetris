@@ -44,7 +44,7 @@ public:
      * @brief Rotates the brick clockwise or counterclockwise
      * @param clockwise If set at true rotates the brick clockwise
      */
-    void rotation(bool clockwise);
+    void rotation(const Board& board, bool clockwise);
     /**
      * @brief Checks if the brick can move in the specified direction.
      * @param board The game board.
@@ -52,13 +52,13 @@ public:
      * @param dy The change in y-coordinate.
      * @return True if the brick can move, false otherwise.
      */
-    bool canMove(Board& board, Direction direction) ;
+    bool canMove(const Board& board, Direction direction) ;
     /**
      * @brief Checks if the brick can rotate.
      * @param board The game board.
      * @return True if the brick can rotate, false otherwise.
      */
-    bool canRotate(const Board& board) const;
+    bool canRotate(const Board& board, const std::vector<Position>& brick) const;
     /**
      * @brief Gets the state of the brick.
      * @return The state of the brick.

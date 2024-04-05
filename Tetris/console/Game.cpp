@@ -109,7 +109,7 @@ bool Game::update(Direction direction)
 
 void Game::update(bool clockwise)
 {
-    currentBrick_->rotation(clockwise);
+    currentBrick_->rotation(*this->board_, clockwise);
 }
 
 void Game::updateState(GameState state)

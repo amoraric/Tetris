@@ -50,7 +50,7 @@ bool Board::isOccupied(Position pos) const
     return board_[pos.get_x()][pos.get_y()];
 }
 
-std::vector<std::vector<bool> > Board::getBoard()
+const std::vector<std::vector<bool> > Board::getBoard() const
 {
     return board_;
 }

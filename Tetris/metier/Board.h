@@ -55,7 +55,7 @@ public:
      * TODO
      */
     int getSize();
-    std::vector<std::vector<bool>> getBoard();
+    const std::vector<std::vector<bool>> getBoard() const;
     void randomize();
 };
 
