@@ -4,7 +4,7 @@
 #include <string>
 
 /**
- * @brief The User class represents a player in the game.
+ * @brief The Player class represents a player in the game.
  */
 class Player {
     std::string nickname_; /**< The nickname of the player. */
@@ -12,7 +12,7 @@ class Player {
     int linesCompleted_; /**< The number of lines completed by the player. */
 public:
     /**
-     * @brief Constructor for the User class.
+     * @brief Constructor for the Player class.
      */
     Player(std::string nickname);
     /**

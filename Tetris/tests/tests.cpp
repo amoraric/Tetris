@@ -3,7 +3,11 @@
 #include "Position.h"
 #include "BrickBag.h"
 #include "Board.h"
+#include "Direction.h"
+#include "Player.h"
 #include "Brick.h"
+#include "Board.h"
+#include <iostream>
 // Tests For Class Position
 TEST_CASE("The 2 positions are identical", "[Positions identical]") {
     Position p1(1, 2);
@@ -62,5 +66,60 @@ TEST_CASE("Upper Left changed correctly ", "[Upper left correct]") {
     REQUIRE(*brick.getUpperLeft() == Position {1,5} );
 }
 //==============================================================
+
+//Tests for class Board
+TEST_CASE("Position is inside board", "[Is inside]") {
+    Board b {10,10};
+    Position p {2,2};
+    REQUIRE(b.isInside(p));
+}
+TEST_CASE("Detection of completed lines", "[Detection completed lines]") {
+    Board b {2,4};
+    Position p {0,0};
+    Position p2 {0,2};
+    b.placeBrick(StaticBrickModels::O,p);
+    b.placeBrick(StaticBrickModels::O,p2);
+    REQUIRE(b.getCompletedLines().size() == 2);
+}
+
+TEST_CASE("Clears completed lines", "[Clear completed lines]") {
+    Board b {2,4};
+    Position p {0,0};
+    Position p2 {0,2};
+    b.placeBrick(StaticBrickModels::O,p);
+    b.placeBrick(StaticBrickModels::O,p2);
+    b.clearLines(b.getCompletedLines());
+    REQUIRE(b.getCompletedLines().size() == 0);
+}
+
+TEST_CASE("Brick placed at expected positions", "[Brick placed correctly]") {
+    Board b {10,10};
+    Position p {5,5};
+    b.placeBrick(StaticBrickModels::O,p);
+    REQUIRE((b.getBoard()[5][5] && b.getBoard()[5][6] && b.getBoard()[6][5] && b.getBoard()[6][6]));
+}
+
+TEST_CASE("Position is occupied", "[Position occupied]") {
+    Board b {10,10};
+    Position p {5,5};
+    b.placeBrick(StaticBrickModels::O,p);
+    REQUIRE(b.isOccupied(p));
+}
+
+TEST_CASE("Randomize leaves no lines", "[Randomize clears lines]") {
+    Board b {100,50};
+    b.randomize();
+    REQUIRE(b.getCompletedLines().size() == 0);
+}
+//====================================================================
+
+//Tests For player
+TEST_CASE("Scored increased properly", "[Score increase]") {
+    Player p {"whatever"};
+    p.increaseScore(0,2,8);
+    REQUIRE(p.getScore() == 16);
+
+}
+//==========================================================
 
 
