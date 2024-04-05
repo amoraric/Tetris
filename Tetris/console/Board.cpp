@@ -3,7 +3,7 @@
 
 Board::Board(std::size_t rows, std::size_t columns) : board_{rows, std::vector<bool>(columns, false)} {}
 
-bool Board::isInside(Position position)
+bool Board::isInside(Position& position)
 {
     return position.get_x() >= 0 && position.get_x() < board_.size()
            && position.get_y() >= 0 && position.get_y() < board_[0].size();
@@ -35,7 +35,7 @@ std::vector<int> Board::getCompletedLines()
     return completedLines;
 }
 
-void Board::placeBrick(const BrickModel &brickModel, Position pos)
+void Board::placeBrick(const BrickModel &brickModel, Position& pos)
 {
     if (!isInside(pos)) {
         return;
@@ -45,7 +45,7 @@ void Board::placeBrick(const BrickModel &brickModel, Position pos)
     }
 }
 
-bool Board::isOccupied(Position pos) const
+bool Board::isOccupied(Position& pos) const
 {
     return board_[pos.get_x()][pos.get_y()];
 }

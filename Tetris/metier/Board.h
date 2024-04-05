@@ -29,7 +29,7 @@ public:
      * @param position The position to check
      * @return True if the position is inside the board, false if not
      */
-    bool isInside(Position position); // is the element inside the board so that it doesn't go out
+    bool isInside(Position& position); // is the element inside the board so that it doesn't go out
     /**
      * @brief clearLines clears the lines of the board
      */
@@ -44,13 +44,13 @@ public:
      * @param shape The model of the brick
      * @param pos The position to place the brick
      */
-    void placeBrick(const BrickModel& brickModel, Position pos);
+    void placeBrick(const BrickModel& brickModel, Position& pos);
     /**
      * @brief isOccupied Checks if a position on the board is occupied
      * @param pos The position to check
      * @return True if the position is occupied, false otherwise
      */
-    bool isOccupied(Position pos) const;
+    bool isOccupied(Position& pos) const;
     /**
      * @brief getSize Gets the size of the board
      * @return The size of the board
