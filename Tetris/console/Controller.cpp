@@ -5,14 +5,15 @@
 void Controller::start()
 {
     View::welcome();
-    std::pair<std::string, int> configuration {View::configure()};
-    facade_ = std::make_unique<Facade>(configuration.first,configuration.second);
-    // this->facade_->addObserver(std::make_shared<Controller>(this));
+    std::tuple<std::string, int,bool> configuration {View::configure()};
+    facade_ = std::make_unique<Facade>(std::get<0>(configuration),std::get<1>(configuration));
+    if(std::get<2>(configuration)){
+        facade_->game()->board()->randomize();
+    }
     facade_->addObserver(shared_from_this());
     update();
     while(!this->facade_->isGameOver()){
-        View::showStats(configuration.first, configuration.second, facade_->getScore(), facade_->getLinesCompleted());
-
+        View::showStats(std::get<0>(configuration), std::get<1>(configuration), facade_->getScore(), facade_->getLinesCompleted());
         auto userAction {View::askAction()};
         if(userAction == "r"){
            facade_->translation(StaticDirections::RIGHT);

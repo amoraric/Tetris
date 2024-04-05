@@ -56,6 +56,7 @@ public:
      */
     int getSize();
     std::vector<std::vector<bool>> getBoard();
+    void randomize();
 };
 
 #endif // BOARD_H

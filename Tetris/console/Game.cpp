@@ -101,6 +101,8 @@ bool Game::update(Direction direction)
         }
     }
     *currentBrick_+direction;
+    std::cout<<currentBrick_->getUpperLeft()->get_x()<<std::endl;
+    std::cout<<currentBrick_->getUpperLeft()->get_y()<<std::endl;
 
     return true;
 }

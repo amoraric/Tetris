@@ -1,12 +1,12 @@
 #include "BrickBag.h"
 
 BrickBag::BrickBag() {
-    // brickBag_.push_back(StaticBrickModels::T);
-    // brickBag_.push_back(StaticBrickModels::L);
-    // brickBag_.push_back(StaticBrickModels::I);
-    // brickBag_.push_back(StaticBrickModels::J);
-    // brickBag_.push_back(StaticBrickModels::Z);
-    // brickBag_.push_back(StaticBrickModels::S);
+    brickBag_.push_back(StaticBrickModels::T);
+    brickBag_.push_back(StaticBrickModels::L);
+    brickBag_.push_back(StaticBrickModels::I);
+    brickBag_.push_back(StaticBrickModels::J);
+    brickBag_.push_back(StaticBrickModels::Z);
+    brickBag_.push_back(StaticBrickModels::S);
     brickBag_.push_back(StaticBrickModels::O);
 }
 

@@ -55,6 +55,28 @@ std::vector<std::vector<bool> > Board::getBoard()
     return board_;
 }
 
+void Board::randomize()
+{
+   auto randomBool = std::rand() % 2;
+   for (int i = 0; i < 6; i++) {
+       for (int j = 0; j < board_[0].size(); j++) {
+           board_[i][j] = randomBool;
+           randomBool = std::rand() % 2;
+       }
+    }
+   for (int i = board_.size()-2; i >= 0; i--) {
+       for (int j = 0; j < board_[0].size(); j++) {
+           auto n = i+1;
+           while(n<= board_.size()-1 && board_[n][j] == false && board_[n-1][j]){
+                board_[n][j] = true;
+                board_[n-1][j] = false;
+                n++;
+            }
+       }
+    }
+   clearLines(this->getCompletedLines());
+}
+
 int Board::getSize()
 {
     return board_.size();

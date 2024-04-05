@@ -37,7 +37,7 @@ void View::display(Board board, Position p, BrickModel b)
     }
 }
 
-std::pair<std::string,int> View::configure()
+std::tuple<std::string,int,bool> View::configure()
 {
     std::cout << "Enter your nickname: ";
     std::string nickname;
@@ -49,8 +49,11 @@ std::pair<std::string,int> View::configure()
         std::cin.clear(); // Clear error flags
         std::cout << "Invalid input. Please enter an integer for the level: ";
     }
+    std::cout<< "Enter any number to randomize the board and 0 to not randomize: ";
+    int randomize;
+    std::cin>>randomize;
 
-    return std::make_pair(nickname, level);
+    return std::make_tuple(nickname, level,randomize);
 }
 
 void View::gameOver()
