@@ -27,12 +27,6 @@ void Brick::rotation(const Board& board, bool clockwise)
     if (canRotate(board, currentBrick)) {
         brickModel_->model = currentBrick;
     }
-
-    // if (clockwise) { // 00 01 02 11 -> 01 10 11 21
-
-    // } else { // 00 10 20 30 -> 00 01 02 03
-
-    // } // 00 01 11 12 -> 00 10 11 21 -> 01 02 10 11
 }
 
 bool Brick::canMove(const Board &board, Direction direction)
