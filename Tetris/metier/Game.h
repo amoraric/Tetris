@@ -85,6 +85,11 @@ public:
      * @return The number of lines completed by the player.
      */
     int getLinesCompleted();
+    /**
+     * @brief currentBrick Returns the current brick
+     * @return the current brick
+     */
+    Brick*currentBrick() const;
 };
 
 #endif // GAME_H

@@ -7,6 +7,11 @@ Board*Game::board() const
     return board_.get();
 }
 
+Brick*Game::currentBrick() const
+{
+    return currentBrick_.get();
+}
+
 Game::Game(std::string nickname, int level) : gameState_{GameState::READY}, currentTime_{0}
 {
     board_ =std::make_unique<Board>(20,10);

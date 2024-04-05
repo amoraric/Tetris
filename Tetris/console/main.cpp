@@ -1,5 +1,6 @@
 #include "Controller.h"
-
+#include <iostream>
+using namespace std;
 int main() {
     // Create some BrickModels
 //    BrickModel brick1;
@@ -57,10 +58,12 @@ int main() {
 
 //    // Controller c;
 //    // c.start();
+    Game game {"whatever",1};
+    game.update(StaticDirections::LEFT);
+    cout<<game.board()->getBoard()[0][9]<<endl;
 
-
-    auto cc = std::make_shared<Controller>();
-    cc->start();
+//    auto cc = std::make_shared<Controller>();
+//    cc->start();
 
     return 0;
 }

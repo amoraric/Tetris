@@ -135,18 +135,18 @@ TEST_CASE("Can not generate twice the same brick", "[Generate twice]") {
 TEST_CASE("Update Left", "[Update Left]") {
     Game game {"whatever",1};
     game.update(StaticDirections::LEFT);
-    REQUIRE(game.board()->getBoard()[0][9]);
-//}
-//TEST_CASE("Update Right", "[Update Right]") {
-//    Game game {"whatever",1};
-//    game.update(StaticDirections::RIGHT);
-//    REQUIRE(game.board()->getBoard()[0][11]);
-//}
-//TEST_CASE("Update Down", "[Update Right]") {
-//    Game game {"whatever",1};
-//    game.update(StaticDirections::DOWN);
-//    REQUIRE(game.board()->getBoard()[1][10]);
-//}
-
-
+    REQUIRE((game.currentBrick()->getUpperLeft()->get_x() == 0 && game.currentBrick()->getUpperLeft()->get_y() == 4));
 }
+TEST_CASE("Update Right", "[Update Right]") {
+    Game game {"whatever",1};
+    game.update(StaticDirections::RIGHT);
+    REQUIRE((game.currentBrick()->getUpperLeft()->get_x() == 0 && game.currentBrick()->getUpperLeft()->get_y() == 6));
+}
+TEST_CASE("Update Down", "[Update Right]") {
+    Game game {"whatever",1};
+    game.update(StaticDirections::DOWN);
+    REQUIRE((game.currentBrick()->getUpperLeft()->get_x() == 1 && game.currentBrick()->getUpperLeft()->get_y() == 5));
+}
+
+
+
