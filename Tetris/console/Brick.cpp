@@ -10,18 +10,30 @@ void Brick::rotation(const Board& board, bool clockwise)
     std::vector<Position> currentBrick = brickModel_->model;
     std::vector<Position> originalBrick = currentBrick;
 
+    int minX = currentBrick[0].get_x(), minY = currentBrick[0].get_y();
+    int maxX = currentBrick[0].get_x(), maxY = currentBrick[0].get_y();
+    for (const auto& pos : currentBrick) {
+        minX = std::min(minX, pos.get_x());
+        minY = std::min(minY, pos.get_y());
+        maxX = std::max(maxX, pos.get_x());
+        maxY = std::max(maxY, pos.get_y());
+    }
+    int centerX = (minX + maxX) / 2;
+    int centerY = (minY + maxY) / 2;
+
     std::vector<std::vector<int>> rotationMatrix;
     if (clockwise)
         rotationMatrix = {{0, 1}, {-1, 0}};
     else
         rotationMatrix = {{0, -1}, {1, 0}};
 
+    // Applying rotation around the center point
     for (size_t i = 0; i < currentBrick.size(); ++i) {
-        int x = currentBrick[i].get_x();
-        int y = currentBrick[i].get_y();
+        int x = currentBrick[i].get_x() - centerX;
+        int y = currentBrick[i].get_y() - centerY;
         int newX = rotationMatrix[0][0] * x + rotationMatrix[0][1] * y;
         int newY = rotationMatrix[1][0] * x + rotationMatrix[1][1] * y;
-        currentBrick[i] = Position(newX, newY);
+        currentBrick[i] = Position(newX + centerX, newY + centerY);
     }
 
     if (canRotate(board, currentBrick)) {

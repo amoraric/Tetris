@@ -1,5 +1,6 @@
 #include "View.h"
 #include <iostream>
+#include <limits>
 
 void View::welcome()
 {
@@ -47,11 +48,16 @@ std::tuple<std::string,int,bool> View::configure()
     int level;
     while (!(std::cin >> level)) { // Input validation loop
         std::cin.clear(); // Clear error flags
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         std::cout << "Invalid input. Please enter an integer for the level: ";
     }
     std::cout<< "Enter any number to randomize the board and 0 to not randomize: ";
     int randomize;
-    std::cin>>randomize;
+    while (!(std::cin >> randomize)) {
+        std::cin.clear(); // Clear error flags
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cout << "Invalid input. Please enter an integer: ";
+    }
 
     return std::make_tuple(nickname, level,randomize);
 }
