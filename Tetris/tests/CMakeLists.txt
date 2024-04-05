@@ -1,0 +1,5 @@
+project(tests)
+
+set(SOURCES
+
+)
