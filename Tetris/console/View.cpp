@@ -14,12 +14,12 @@
 
 void View::welcome()
 {
-    system("clear");
+    // system("clear");
     std::cout<<"Welcome to Tetris"<<std::endl;
 }
 
 void View::display(Board board, Position& p, BrickModel b) {
-    system("clear");
+    // system("clear");
     const int boardWidth = board.getBoard()[0].size();
     const int boardHeight = board.getSize();
 

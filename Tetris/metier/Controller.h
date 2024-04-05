@@ -10,8 +10,6 @@
 class Controller : public Observer, public std::enable_shared_from_this<Controller> {
     std::unique_ptr<Facade> facade_; /**< The facade for controlling game interactions. */
     std::tuple<std::string, int,bool> configuration_; /**< The configuration chosen by the player. */
-    std::string nickname_;
-    int level_;
 public:
     /**
      * @brief Starts the game.

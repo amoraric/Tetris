@@ -12,9 +12,19 @@ Brick*Game::currentBrick() const
     return currentBrick_.get();
 }
 
+std::string Game::getNickname()
+{
+    return this->player_->getNickname();
+}
+
+int Game::getLevel()
+{
+    return this->difficulty_->getLevel();
+}
+
 Game::Game(std::string nickname, int level, int rows, int columns) : gameState_{GameState::READY}, currentTime_{0}
 {
-    board_ =std::make_unique<Board>(rows,columns);
+    board_ = std::make_unique<Board>(rows,columns);
     bag_= std::make_unique<BrickBag>();
     difficulty_ = std::make_unique<Difficulty>(level);
     player_ = std::make_unique<Player>(nickname);

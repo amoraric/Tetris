@@ -39,6 +39,7 @@ public:
      * @return The number of lines completed by the player.
      */
     int getLinesCompleted();
+    std::string getNickname();
 };
 
 #endif // PLAYER_H

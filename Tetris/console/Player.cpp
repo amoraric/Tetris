@@ -33,3 +33,8 @@ int Player::getLinesCompleted()
     return linesCompleted_;
 }
 
+std::string Player::getNickname()
+{
+    return this->nickname_;
+}
+

@@ -6,8 +6,6 @@ void Controller::start()
 {
     View::welcome();
     std::tuple<std::string, int,bool, int, int> configuration_ {View::configure()};
-    std::string nickname_ = std::get<0>(configuration_);
-    int level_ = std::get<1>(configuration_);
     facade_ = std::make_unique<Facade>(std::get<0>(configuration_),std::get<1>(configuration_), std::get<3>(configuration_), std::get<4>(configuration_));
     if(std::get<2>(configuration_)){
         facade_->game()->board()->randomize();
@@ -53,7 +51,7 @@ void Controller::update()
     auto brickDetails {facade_->game()->getBrickDetails()};
     View::display(*board,brickDetails.first,brickDetails.second);
     if(!this->facade_->isGameOver()){
-        View::showStats(nickname_, level_, facade_->getScore(), facade_->getLinesCompleted());
+        View::showStats(facade_->getNickname(), facade_->getLevel(), facade_->getScore(), facade_->getLinesCompleted());
     }
     else{
         View::gameOver();

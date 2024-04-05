@@ -69,6 +69,8 @@ public:
      * @return A pointer to the game instance.
      */
     Game* game() const;
+    std::string getNickname();
+    int getLevel();
     /**
      * @brief Adds an observer to the list of observers.
      * @param observer The observer to add.

@@ -5,6 +5,16 @@ Game*Facade::game() const
     return game_.get();
 }
 
+std::string Facade::getNickname()
+{
+    return this->game_->getNickname();
+}
+
+int Facade::getLevel()
+{
+    return this->game_->getLevel();
+}
+
 Facade::Facade(std::string nickname, int level, int rows, int columns) : game_{std::make_unique<Game>(nickname,level,rows,columns)}
 {}
 

@@ -90,6 +90,8 @@ public:
      * @return the current brick
      */
     Brick*currentBrick() const;
+    std::string getNickname();
+    int getLevel();
 };
 
 #endif // GAME_H
