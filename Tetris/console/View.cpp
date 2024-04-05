@@ -2,19 +2,21 @@
 #include <iostream>
 #include <limits>
 
+
 void View::welcome()
 {
-   std::cout<<"Welcome to Tetris"<<std::endl;
+    system("clear");
+    std::cout<<"Welcome to Tetris"<<std::endl;
 }
 
 void View::display(Board board, Position p, BrickModel b)
 {
+    system("clear");
     std::vector<Position> v {};
     for (int var = 0; var < b.model.size(); ++var) {
         v.push_back({b.model[var].get_x()+p.get_x(),b.model[var].get_y()+p.get_y()});
 
     }
-    std::cout << board.getSize() << std::endl;
     for (int i = 0; i < board.getSize(); ++i) {
         for (int j = 0; j < board.getBoard()[0].size(); ++j) {
             bool written = false;

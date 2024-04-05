@@ -33,6 +33,10 @@ class Brick {
      * @brief state_ Current state of the brick
      */
     BrickState state_;
+    /**
+     * @brief state_ The center point of the brick
+     */
+    std::unique_ptr<Position> center_;
 public:
     /**
      * @brief Brick

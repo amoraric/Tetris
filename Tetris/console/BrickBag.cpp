@@ -16,7 +16,7 @@ bool BrickBag::addBrick(const BrickModel& newBrick) {
     }
     for (const auto& brick : brickBag_) {
         if (brick == newBrick) {
-            return false; // TODO : check for rotation of the brickModel
+            return false;
         }
     }
     brickBag_.push_back(newBrick);

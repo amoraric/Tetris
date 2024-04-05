@@ -1,25 +1,29 @@
 #include <memory>
 #include "Direction.h"
 #include "Brick.h"
+#include <iostream>
 
 Brick::Brick(BrickModel model, const Board &board) : orientation_(0), brickModel_(std::make_unique<BrickModel>(model)),
-    upperLeft_(std::make_unique<Position>(0, board.getBoard()[0].size()/2)), state_(BrickState::FALLING) {}
+    upperLeft_(std::make_unique<Position>(0, board.getBoard()[0].size()/2)), state_(BrickState::FALLING) {
+    // calculates the center around which the brick is going to rotate
+    int sumX = 0, sumY = 0;
+    for (const auto& pos : brickModel_->model) {
+        sumX += pos.get_x();
+        sumY += pos.get_y();
+    }
+    int centerX = sumX / brickModel_->model.size();
+    int centerY = sumY / brickModel_->model.size();
+    center_ = std::make_unique<Position>((centerX + board.getBoard()[0].size() % 2), centerY);
+}
 
 void Brick::rotation(const Board& board, bool clockwise)
 {
+    // Checking if the brick is a square and not rotating it
+
     std::vector<Position> currentBrick = brickModel_->model;
     std::vector<Position> originalBrick = currentBrick;
 
-    int minX = currentBrick[0].get_x(), minY = currentBrick[0].get_y();
-    int maxX = currentBrick[0].get_x(), maxY = currentBrick[0].get_y();
-    for (const auto& pos : currentBrick) {
-        minX = std::min(minX, pos.get_x());
-        minY = std::min(minY, pos.get_y());
-        maxX = std::max(maxX, pos.get_x());
-        maxY = std::max(maxY, pos.get_y());
-    }
-    int centerX = (minX + maxX) / 2;
-    int centerY = (minY + maxY) / 2;
+    std::cout << center_->get_x() << ":" << center_->get_y() << std::endl;
 
     std::vector<std::vector<int>> rotationMatrix;
     if (clockwise)
@@ -29,15 +33,17 @@ void Brick::rotation(const Board& board, bool clockwise)
 
     // Applying rotation around the center point
     for (size_t i = 0; i < currentBrick.size(); ++i) {
-        int x = currentBrick[i].get_x() - centerX;
-        int y = currentBrick[i].get_y() - centerY;
+        int x = currentBrick[i].get_x() - center_->get_x();
+        int y = currentBrick[i].get_y() - center_->get_y();
         int newX = rotationMatrix[0][0] * x + rotationMatrix[0][1] * y;
         int newY = rotationMatrix[1][0] * x + rotationMatrix[1][1] * y;
-        currentBrick[i] = Position(newX + centerX, newY + centerY);
+        currentBrick[i] = Position(newX + center_->get_x(), newY + center_->get_y());
     }
 
     if (canRotate(board, currentBrick)) {
         brickModel_->model = currentBrick;
+    } else {
+        brickModel_->model = originalBrick;
     }
 }
 
