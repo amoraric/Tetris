@@ -27,7 +27,7 @@ public:
     /**
      * @brief Constructor for the Game class.
      */
-    Game(std::string nickname, int level);
+    Game(std::string nickname, int level, int rows, int columns);
     /**
      * @brief Generates a new shape on the board.
      */

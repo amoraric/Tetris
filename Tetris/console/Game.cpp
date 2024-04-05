@@ -12,9 +12,9 @@ Brick*Game::currentBrick() const
     return currentBrick_.get();
 }
 
-Game::Game(std::string nickname, int level) : gameState_{GameState::READY}, currentTime_{0}
+Game::Game(std::string nickname, int level, int rows, int columns) : gameState_{GameState::READY}, currentTime_{0}
 {
-    board_ =std::make_unique<Board>(20,10);
+    board_ =std::make_unique<Board>(rows,columns);
     bag_= std::make_unique<BrickBag>();
     difficulty_ = std::make_unique<Difficulty>(level);
     player_ = std::make_unique<Player>(nickname);
@@ -69,7 +69,7 @@ bool Game::update(Direction direction)
         v.push_back({model[var].get_x()+upperLeft->get_x()+direction.getDx(),model[var].get_y()+upperLeft->get_y() + direction.getDy()});
     }
     for (auto vv : v) {
-        if (direction == StaticDirections::DOWN && (vv.get_x() == 20 ||
+        if (direction == StaticDirections::DOWN && (vv.get_x() == this->board_->getSize() ||
                                                     this->board_->isOccupied(vv))) {
             this->board_->placeBrick(*currentBrick_->getBrickModel(), *upperLeft);
             if (upperLeft->get_x() == 0) {

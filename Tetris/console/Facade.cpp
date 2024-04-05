@@ -5,7 +5,7 @@ Game*Facade::game() const
     return game_.get();
 }
 
-Facade::Facade(std::string nickname, int level) : game_{std::make_unique<Game>(nickname,level)}
+Facade::Facade(std::string nickname, int level, int rows, int columns) : game_{std::make_unique<Game>(nickname,level,rows,columns)}
 {}
 
 Facade::~Facade()

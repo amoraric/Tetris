@@ -19,6 +19,10 @@ Brick::Brick(BrickModel model, const Board &board) : orientation_(0), brickModel
 void Brick::rotation(const Board& board, bool clockwise)
 {
     // Checking if the brick is a square and not rotating it
+    BrickModel O_temp {{ {0, 0}, {1, 0}, {0, 1}, {1, 1} }};
+    if (*this->brickModel_ == O_temp) {
+        return;
+    }
 
     std::vector<Position> currentBrick = brickModel_->model;
     std::vector<Position> originalBrick = currentBrick;
@@ -39,6 +43,7 @@ void Brick::rotation(const Board& board, bool clockwise)
         int newY = rotationMatrix[1][0] * x + rotationMatrix[1][1] * y;
         currentBrick[i] = Position(newX + center_->get_x(), newY + center_->get_y());
     }
+
 
     if (canRotate(board, currentBrick)) {
         brickModel_->model = currentBrick;

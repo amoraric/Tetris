@@ -124,7 +124,7 @@ TEST_CASE("Score increased properly", "[Score increase]") {
 
 //Tests For Game
 TEST_CASE("Can not generate twice the same brick", "[Generate twice]") {
-    Game game {"whatever",1};
+    Game game {"whatever", 1, 20, 10};
     game.generate();
     auto b1 {game.getBrickDetails().second};
     game.generate();
@@ -133,17 +133,17 @@ TEST_CASE("Can not generate twice the same brick", "[Generate twice]") {
 }
 
 TEST_CASE("Update Left", "[Update Left]") {
-    Game game {"whatever",1};
+    Game game {"whatever", 1, 20, 10};
     game.update(StaticDirections::LEFT);
     REQUIRE((game.currentBrick()->getUpperLeft()->get_x() == 0 && game.currentBrick()->getUpperLeft()->get_y() == 4));
 }
 TEST_CASE("Update Right", "[Update Right]") {
-    Game game {"whatever",1};
+    Game game {"whatever", 1, 20, 10};
     game.update(StaticDirections::RIGHT);
     REQUIRE((game.currentBrick()->getUpperLeft()->get_x() == 0 && game.currentBrick()->getUpperLeft()->get_y() == 6));
 }
 TEST_CASE("Update Down", "[Update Right]") {
-    Game game {"whatever",1};
+    Game game {"whatever", 1, 20, 10};
     game.update(StaticDirections::DOWN);
     REQUIRE((game.currentBrick()->getUpperLeft()->get_x() == 1 && game.currentBrick()->getUpperLeft()->get_y() == 5));
 }

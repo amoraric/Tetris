@@ -5,15 +5,16 @@
 void Controller::start()
 {
     View::welcome();
-    std::tuple<std::string, int,bool> configuration {View::configure()};
-    facade_ = std::make_unique<Facade>(std::get<0>(configuration),std::get<1>(configuration));
-    if(std::get<2>(configuration)){
+    std::tuple<std::string, int,bool, int, int> configuration_ {View::configure()};
+    std::string nickname_ = std::get<0>(configuration_);
+    int level_ = std::get<1>(configuration_);
+    facade_ = std::make_unique<Facade>(std::get<0>(configuration_),std::get<1>(configuration_), std::get<3>(configuration_), std::get<4>(configuration_));
+    if(std::get<2>(configuration_)){
         facade_->game()->board()->randomize();
     }
     facade_->addObserver(shared_from_this());
     update();
     while(!this->facade_->isGameOver()){
-        View::showStats(std::get<0>(configuration), std::get<1>(configuration), facade_->getScore(), facade_->getLinesCompleted());
         auto userAction {View::askAction()};
         if(userAction == "r"){
            facade_->translation(StaticDirections::RIGHT);
@@ -41,17 +42,18 @@ void Controller::start()
            facade_->rotation(true);
         }
         else{
-           std::cout<<"input not recognized"<<std::endl;
+           std::cout<<"Input not recognized"<<std::endl;
         }
     }
 }
 
 void Controller::update()
 {
+    auto board {facade_->game()->board()};
+    auto brickDetails {facade_->game()->getBrickDetails()};
+    View::display(*board,brickDetails.first,brickDetails.second);
     if(!this->facade_->isGameOver()){
-        auto board {facade_->game()->board()};
-        auto brickDetails {facade_->game()->getBrickDetails()};
-        View::display(*board,brickDetails.first,brickDetails.second);
+        View::showStats(nickname_, level_, facade_->getScore(), facade_->getLinesCompleted());
     }
     else{
         View::gameOver();

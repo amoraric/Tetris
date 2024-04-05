@@ -23,7 +23,7 @@ public:
      * @param rows Number of rows
      * @param columns Number of columns
      */
-    Board(std::size_t rows, std::size_t columns); // the user can ajust the side of the board
+    Board(std::size_t rows, std::size_t columns);
     /**
      * @brief isInside Checks if a position is inside the board
      * @param position The position to check

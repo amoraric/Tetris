@@ -43,7 +43,7 @@ public:
      * @param model
      * @param board
      */
-    Brick(BrickModel model, const Board &board); // TODO: defendre ca avec le prof
+    Brick(BrickModel model, const Board &board);
     /**
      * @brief Rotates the brick clockwise or counterclockwise
      * @param clockwise If set at true rotates the brick clockwise

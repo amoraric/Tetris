@@ -21,7 +21,7 @@ public:
     /**
      * @brief Constructor for the Facade class.
      */
-    Facade(std::string nickname, int level);
+    Facade(std::string nickname, int level, int rows, int columns);
     /**
      * @brief Destructor for the Facade class.
      */
