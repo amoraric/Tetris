@@ -56,12 +56,34 @@ public:
      * @return True if the game is over, false otherwise.
      */
     bool isGameOver() const;
-    GameState getState;
+    /**
+     * @brief Returns the current state of the game
+     * @return Instance of type GameState
+     */
     GameState getGameState() const;
+    /**
+     * @brief Drops the current brick to the lowest possible position on the board.
+     */
     void drop();
+    /**
+     * @brief Returns the details of the current brick, including its position and model.
+     * @return A pair containing the position and model of the current brick.
+     */
     std::pair<Position,BrickModel> getBrickDetails();
-    Board*board() const;
+    /**
+     * @brief Returns a pointer to the game board.
+     * @return A pointer to the game board.
+     */
+    Board* board() const;
+    /**
+     * @brief Returns the current score of the player.
+     * @return The current score of the player.
+     */
     int getScore();
+    /**
+     * @brief Returns the number of lines completed by the player.
+     * @return The number of lines completed by the player.
+     */
     int getLinesCompleted();
 };
 

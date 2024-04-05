@@ -26,18 +26,6 @@ public:
      * @brief Destructor for the Facade class.
      */
     ~Facade() override;
-    // /**
-    //  * @brief Starts the game.
-    //  */
-    // void start();
-    // /**
-    //  * @brief Pauses the game.
-    //  */
-    // void pause();
-    // /**
-    //  * @brief Resumes the game.
-    //  */
-    // void resume();
     /**
      * @brief Ends the game.
      */
@@ -57,6 +45,31 @@ public:
      */
     void drop();
     /**
+     * @brief Gets the details of the current brick.
+     * @return A pair containing the position and model of the current brick.
+     */
+    std::pair<Position, BrickModel> getBrickDetails();
+    /**
+     * @brief Checks if the game is over.
+     * @return True if the game is over, false otherwise.
+     */
+    bool isGameOver();
+    /**
+     * @brief Gets the current score of the player.
+     * @return The current score of the player.
+     */
+    int getScore();
+    /**
+     * @brief Gets the number of lines completed by the player.
+     * @return The number of lines completed by the player.
+     */
+    int getLinesCompleted();
+    /**
+     * @brief Returns a pointer to the game instance.
+     * @return A pointer to the game instance.
+     */
+    Game* game() const;
+    /**
      * @brief Adds an observer to the list of observers.
      * @param observer The observer to add.
      */
@@ -70,12 +83,6 @@ public:
      * @brief Notifies all observers.
      */
     void notifyObservers() override;
-    std::pair<Position, BrickModel> getBrickDetails();
-    bool isGameOver();
-    int getScore();
-    int getLinesCompleted();
-
-    Game*game() const;
 };
 
 #endif // FACADE_H

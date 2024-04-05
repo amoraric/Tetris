@@ -24,8 +24,20 @@ public:
      * @brief Increases the count of lines completed by the player.
      * @param count The number of lines completed.
      */
+    /**
+     * @brief Increases the count of lines completed by the player.
+     * @param count The number of lines completed.
+     */
     void increaseLinesCount(int count);
+    /**
+     * @brief Gets the current score of the player.
+     * @return The current score of the player.
+     */
     int getScore();
+    /**
+     * @brief Gets the number of lines completed by the player.
+     * @return The number of lines completed by the player.
+     */
     int getLinesCompleted();
 };
 

@@ -1,7 +1,6 @@
 #include "Game.h"
 #include <cstdlib>
 #include <ctime>
-#include <iostream>
 
 Board*Game::board() const
 {
@@ -77,7 +76,6 @@ bool Game::update(Direction direction)
             auto linesCompleted = this->board_->getCompletedLines();
             this->board_->clearLines(linesCompleted);
             int numberLinesCompleted = linesCompleted.size();
-            std::cout << "stats:" << numberLinesCompleted << ":" << difficulty_->getLevel() << ":" << vv.get_x() << std::endl;
             this->player_->increaseScore(numberLinesCompleted, difficulty_->getLevel(), vv.get_x());
             this->player_->increaseLinesCount(numberLinesCompleted);
 
@@ -101,8 +99,6 @@ bool Game::update(Direction direction)
         }
     }
     *currentBrick_+direction;
-    std::cout<<currentBrick_->getUpperLeft()->get_x()<<std::endl;
-    std::cout<<currentBrick_->getUpperLeft()->get_y()<<std::endl;
 
     return true;
 }

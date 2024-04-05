@@ -8,7 +8,7 @@ enum class BrickState {
     FREE, /**< The brick is free to move. */
     BLOCKED, /**< The brick is blocked and cannot move further. */
     ACCOMPLISHED, /**< The brick has accomplished its goal. */
-    FALLING
+    FALLING /**  */
 };
 
 #endif // BRICKSTATE_H

@@ -1,6 +1,5 @@
 #include "Difficulty.h"
 #include <fstream>
-#include <sstream>
 #include <iostream>
 
 Difficulty::Difficulty(int level)

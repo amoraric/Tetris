@@ -52,10 +52,18 @@ public:
      */
     bool isOccupied(Position pos) const;
     /**
-     * TODO
+     * @brief getSize Gets the size of the board
+     * @return The size of the board
      */
     int getSize();
+    /**
+     * @brief getBoard Gets the current state of the board
+     * @return A constant reference to the 2D vector representing the board
+     */
     const std::vector<std::vector<bool>> getBoard() const;
+    /**
+     * @brief randomize Randomizes the board
+     */
     void randomize();
 };
 

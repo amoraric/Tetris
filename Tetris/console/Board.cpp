@@ -1,7 +1,7 @@
 #include "Board.h"
-#include <iostream>
-using namespace std;
-Board::Board(size_t rows, size_t columns) : board_{rows, std::vector<bool>(columns, false)} {}
+#include <cstdlib>
+
+Board::Board(std::size_t rows, std::size_t columns) : board_{rows, std::vector<bool>(columns, false)} {}
 
 bool Board::isInside(Position position)
 {

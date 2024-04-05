@@ -1,6 +1,6 @@
 #include "Controller.h"
 #include "View.h"
-#include "Observer.h"
+#include "iostream"
 
 void Controller::start()
 {

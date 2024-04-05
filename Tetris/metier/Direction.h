@@ -31,6 +31,11 @@ public:
      * @return The vertical component.
      */
     int getDy() const;
+    /**
+     * @brief Overloaded equality operator to compare two directions.
+     * @param other The other direction to compare.
+     * @return True if the directions are equal, false otherwise.
+     */
     bool operator==(const Direction& other) const;
 };
 

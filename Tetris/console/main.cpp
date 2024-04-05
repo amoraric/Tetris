@@ -1,8 +1,3 @@
-#include "Board.h"
-#include <iostream>
-#include "Brick.h"
-#include "BrickBag.h"
-#include "Difficulty.h"
 #include "Controller.h"
 
 int main() {

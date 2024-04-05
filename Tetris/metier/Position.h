@@ -26,10 +26,20 @@ public:
      * @return The y-coordinate.
      */
     int get_y() const;
-
+    /**
+     * @brief Overloaded equality operator to compare two positions.
+     * @param other The other position to compare.
+     * @return True if the positions are equal, false otherwise.
+     */
     bool operator==(const Position& other) const;
 };
 
+/**
+ * @brief Compares two positions for equality.
+ * @param pos1 The first position to compare.
+ * @param pos2 The second position to compare.
+ * @return True if the positions are equal, false otherwise.
+ */
 bool comparePositions(const Position &pos1, const Position &pos2);
 
 #endif // POSITION_H

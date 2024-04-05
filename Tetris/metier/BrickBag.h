@@ -23,7 +23,15 @@ public:
      * @return True if the shape is added successfully, false otherwise.
      */
     bool addBrick(const BrickModel& newBrick);
+    /**
+     * @brief getBrickBag
+     * @return
+     */
     std::vector<BrickModel> getBrickBag();
+    /**
+     * @brief eraseBrickIndex
+     * @param index
+     */
     void eraseBrickIndex(int index);
 };
 

@@ -1,5 +1,4 @@
 #include "Facade.h"
-#include <algorithm>
 
 Game*Facade::game() const
 {
@@ -12,26 +11,6 @@ Facade::Facade(std::string nickname, int level) : game_{std::make_unique<Game>(n
 Facade::~Facade()
 {}
 
-//void Facade::start()
-//{
-//    this->game_->updateState(GameState::READY);
-
-//}
-
-//void Facade::pause()
-//{
-//   if(this->game_->getState == GameState::READY){
-//       this->game_->updateState(GameState::PAUSED);
-//   }
-//}
-
-//void Facade::resume()
-//{
-//    if(this->game_->getState == GameState::READY){
-//        this->game_->updateState(GameState::PAUSED);
-//    }
-//}
-
 void Facade::end()
 {
     this->game_->updateState(GameState::FINISHED);
@@ -41,7 +20,7 @@ void Facade::end()
 
 void Facade::translation(Direction direction)
 {
-    if(game_->getState == GameState::READY){
+    if(game_->getGameState() == GameState::READY){
         this->game_->update(direction);
         notifyObservers();
     }
@@ -49,7 +28,7 @@ void Facade::translation(Direction direction)
 
 void Facade::rotation(bool clockwise)
 {
-    if(game_->getState == GameState::READY){
+    if(game_->getGameState() == GameState::READY){
         this->game_->update(clockwise);
         notifyObservers();
     }
@@ -57,7 +36,7 @@ void Facade::rotation(bool clockwise)
 
 void Facade::drop()
 {
-    if(game_->getState == GameState::READY){
+    if(game_->getGameState() == GameState::READY){
         this->game_->drop();
         notifyObservers();
     }
@@ -65,13 +44,11 @@ void Facade::drop()
 
 void Facade::addObserver(std::shared_ptr<Observer> observer)
 {
-  //  this->observers_.push_back(std::make_shared<Observer>(observer));
     observers_.insert(observer);
 }
 
 void Facade::removeObserver(std::shared_ptr<Observer> observer)
 {
-   // observers_.erase(std::remove(this->observers_.begin(),this->observers_.end(),observer),observers_.end());
     observers_.erase(observer);
 }
 
