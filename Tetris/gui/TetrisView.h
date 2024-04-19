@@ -8,20 +8,26 @@ private:
     QGridLayout *gridLayout;
     void initUI() {
         gridLayout = new QGridLayout(this);
-                gridLayout->setSpacing(0);
+        gridLayout->setSpacing(0);
 
         // Create the game board
         for (int i = 0; i < rows; ++i) {
             for (int j = 0; j < cols; ++j) {
                 QLabel *cell = new QLabel;
-                cell->setFixedSize(20, 20); // Set the size of each cell
-                cell->setFrameStyle(QFrame::Box); // Add border to cells for visualization
+                cell->setMinimumSize(10, 10);
+                cell->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+                cell->setFrameStyle(QFrame::StyledPanel | QFrame::Plain);
+                cell->setLineWidth(0);
+                cell->setMidLineWidth(1);
                 gridLayout->addWidget(cell, i, j);
+                gridLayout->setRowStretch(i, 1);
+                gridLayout->setColumnStretch(j, 1);
             }
         }
 
         setLayout(gridLayout);
     }
+
 
     int rows;
     int cols;
