@@ -7,10 +7,7 @@ MainWindow::MainWindow(QWidget *parent) :
     _scene(this)
 {
     ui->setupUi(this);
-    QRect viewContentsRect = ui->myGraphicsView->contentsRect();
-    _scene.setSceneRect(viewContentsRect);
-    ui->myGraphicsView->setScene(&_scene);
-    _scene.addRect(20,20,100,100);
+
 }
 
 MainWindow::~MainWindow()
