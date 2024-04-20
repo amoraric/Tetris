@@ -51,11 +51,6 @@ void Game::generate()
     for (auto vv : v) {
         if (this->board_->isOccupied(vv)) {
             updateState(GameState::FINISHED);
-            std::cout << 1 << std::endl;
-            std::cout << this->player_->getScore() << std::endl;
-            std::cout << this->difficulty_->getMaxScore() << std::endl;
-            std::cout << this->player_->getLinesCompleted() << std::endl;
-            std::cout << this->difficulty_->getMaxLines() << std::endl;
             return;
         }
     }
@@ -71,11 +66,6 @@ void Game::calculateScore()
         if(player_->getLinesCompleted() >= difficulty_->getMaxLines()){
            if(!difficulty_->nextDifficulty()){
                gameState_ = GameState::FINISHED;
-               std::cout << 2 << std::endl;
-               std::cout << this->player_->getScore() << std::endl;
-               std::cout << this->difficulty_->getMaxScore() << std::endl;
-               std::cout << this->player_->getLinesCompleted() << std::endl;
-               std::cout << this->difficulty_->getMaxLines() << std::endl;
            }
         }
     }
@@ -95,11 +85,6 @@ bool Game::update(Direction direction)
             this->board_->placeBrick(*currentBrick_->getBrickModel(), *upperLeft);
             if (upperLeft->get_x() == 0) {
                 updateState(GameState::FINISHED);
-                std::cout << 3 << std::endl;
-                std::cout << this->player_->getScore() << std::endl;
-                std::cout << this->difficulty_->getMaxScore() << std::endl;
-                std::cout << this->player_->getLinesCompleted() << std::endl;
-                std::cout << this->difficulty_->getMaxLines() << std::endl;
                 Direction dir {-5, -5};
                 *currentBrick_+dir;
             }
@@ -113,13 +98,11 @@ bool Game::update(Direction direction)
             if (this->player_->getLinesCompleted() % 10 == 0 && this->player_->getLinesCompleted() != 0) {
                 this->difficulty_->nextDifficulty();
             }
+            if (this->player_->getScore() % 1000 == 0 && this->player_->getLinesCompleted() != 0) {
+                this->difficulty_->nextDifficulty();
+            }
             if(this->player_->getScore() >= this->difficulty_->getMaxScore() || this->player_->getLinesCompleted() >= this->difficulty_->getMaxLines()){
                     this->updateState(GameState::FINISHED);
-                    std::cout << 4 << std::endl;
-                    std::cout << this->player_->getScore() << std::endl;
-                    std::cout << this->difficulty_->getMaxScore() << std::endl;
-                    std::cout << this->player_->getLinesCompleted() << std::endl;
-                    std::cout << this->difficulty_->getMaxLines() << std::endl;
             }
             if (this->gameState_ != GameState::FINISHED) {
                 generate();
