@@ -1,5 +1,5 @@
 #include "Player.h"
-Player::Player(std::string nickname) : nickname_{nickname}, score_{0}
+Player::Player(std::string nickname) : nickname_{nickname}, score_{0}, linesCompleted_{0}
 {}
 
 void Player::increaseScore(int linesCleared, int level, int distance)

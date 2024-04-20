@@ -5,7 +5,7 @@
 int main(int argc, char* argv[]){
     QApplication application(argc,argv);
 
-    MainWindow myWindow;
-    myWindow.show();
+    auto myWindow = std::make_shared<MainWindow>();
+    myWindow->show();
     return application.exec();
 }
