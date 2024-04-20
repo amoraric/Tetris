@@ -19,7 +19,7 @@ public:
      * @param p The position of the current brick.
      * @param b The model of the current brick.
      */
-    static void display(Board board, Position& p, BrickModel b);
+    static void display(Board board, Position p, BrickModel b);
     /**
      * @brief Configures game settings.
      * @return A tuple containing the player's nickname, selected difficulty level, and whether to load a saved game.

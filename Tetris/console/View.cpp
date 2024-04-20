@@ -18,49 +18,35 @@ void View::welcome()
     std::cout<<"Welcome to Tetris"<<std::endl;
 }
 
-void View::display(Board board, Position& p, BrickModel b) {
-    // system("clear");
-    const int boardWidth = board.getBoard()[0].size();
-    const int boardHeight = board.getSize();
-
-    std::vector<Position> v{};
+void View::display(Board board, Position p, BrickModel b)
+{
+    system("clear");
+    std::vector<Position> v {};
     for (int var = 0; var < b.model.size(); ++var) {
-        v.push_back({b.model[var].get_x() + p.get_x(), b.model[var].get_y() + p.get_y()});
-    }
+        v.push_back({b.model[var].get_x()+p.get_x(),b.model[var].get_y()+p.get_y()});
 
-    // Print the top border
-    std::cout << ANSI_COLOR_CYAN "╔";
-    for (int j = 0; j < boardWidth * 3; ++j) {
-        std::cout << "═";
     }
-    std::cout << "╗" ANSI_COLOR_RESET << std::endl;
-
-    // Print the board and blocks
-    for (int i = 0; i < boardHeight; ++i) {
-        std::cout << ANSI_COLOR_CYAN "║" ANSI_COLOR_RESET;
-        for (int j = 0; j < boardWidth; ++j) {
-            bool isBlock = false;
+    for (int i = 0; i < board.getSize(); ++i) {
+        for (int j = 0; j < board.getBoard()[0].size(); ++j) {
+            bool written = false;
             for (int var = 0; var < v.size(); ++var) {
-                if (i == v[var].get_x() && j == v[var].get_y()) {
-                    std::cout << ANSI_COLOR_YELLOW "███" ANSI_COLOR_RESET;  // Print the block
-                    v.erase(v.begin() + var);
-                    isBlock = true;
+                if(i == v[var].get_x() && j == v[var].get_y()){
+                    std::cout<<"x";
+                    v.erase(v.begin()+var);
+                    written = true;
                     break;
                 }
             }
-            if (!isBlock) {
-                std::cout << (board.getBoard()[i][j] ? ANSI_COLOR_GREEN "███" ANSI_COLOR_RESET : "   ");  // Print filled or empty cell
+            if(board.getBoard()[i][j] && !written){
+                std::cout<<"o";
             }
-        }
-        std::cout << ANSI_COLOR_CYAN "║" ANSI_COLOR_RESET << std::endl;
-    }
+            else if (!board.getBoard()[i][j] && !written){
+                std::cout<<"_";
+            }
 
-    // Print the bottom border
-    std::cout << ANSI_COLOR_CYAN "╚";
-    for (int j = 0; j < boardWidth * 3; ++j) {
-        std::cout << "═";
+        }
+        std::cout<<std::endl;
     }
-    std::cout << "╝" ANSI_COLOR_RESET << std::endl;
 }
 
 std::tuple<std::string, int, bool, int, int> View::configure()

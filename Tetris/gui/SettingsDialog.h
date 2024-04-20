@@ -17,6 +17,8 @@ public:
 
     int getWidth() const;
     int getHeight() const;
+    std::string getNickname() const;
+    int getLevel() const;
 
 private:
     Ui::Dialog *ui;

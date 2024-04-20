@@ -8,6 +8,7 @@ SettingsDialog::SettingsDialog(QWidget *parent) :
     ui->setupUi(this);
     ui->spinBoxWidth->setValue(10);
     ui->spinBoxHeight->setValue(20);
+    ui->spinBoxLevel->setValue(1);
 }
 
 SettingsDialog::~SettingsDialog()
@@ -23,4 +24,14 @@ int SettingsDialog::getWidth() const
 int SettingsDialog::getHeight() const
 {
     return ui->spinBoxHeight->value();
+}
+
+std::string SettingsDialog::getNickname() const
+{
+    return ui->nicknameEdit->toPlainText().toStdString();
+}
+
+int SettingsDialog::getLevel() const
+{
+    return ui->spinBoxLevel->value();
 }

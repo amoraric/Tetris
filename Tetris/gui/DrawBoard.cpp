@@ -60,3 +60,20 @@ void DrawBoard::updateBoard(const std::vector<std::vector<bool>>& staticBoard, c
         }
     }
 }
+
+void DrawBoard::reset() {
+    scene->clear();
+
+    blockSize = calculateBlockSize(scene->width(), scene->height());
+    int exactWidth = numColumns * blockSize;
+    int exactHeight = numRows * blockSize;
+    scene->setSceneRect(0, 0, exactWidth, exactHeight);
+
+    for (int i = 0; i < exactHeight; i += blockSize) {
+        for (int j = 0; j < exactWidth; j += blockSize) {
+            QGraphicsRectItem *rect = scene->addRect(j, i, blockSize, blockSize);
+            rect->setBrush(Qt::lightGray);
+            rect->setPen(QPen(Qt::gray));
+        }
+    }
+}

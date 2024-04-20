@@ -21,18 +21,25 @@ public:
     ~MainWindow();
 
 protected:
-    void resizeEvent(QResizeEvent *event) override;
-    void onPlayButtonClicked();
-    void startGame();
-    void gameLoop();
     void keyPressEvent(QKeyEvent *event) override;
-    QAction getPendingAction();
+
+private slots:
+    void onPlayButtonClicked();
+    void onEndGameButtonClicked();
+    void openSettingsDialog();
+    void gameLoop();
 
 private:
+    void resizeEvent(QResizeEvent *event) override;
     Ui::MainWindow *ui;
     QGraphicsScene *_scene;
     std::unique_ptr<DrawBoard> drawBoard;
     std::unique_ptr<Facade> facade_;
+    std::string nickname_ = "Anonymous";
+    int level_ = 1;
+
+    void connectButtons();
+    void startGame();
 };
 
 #endif // MAINWINDOW_H

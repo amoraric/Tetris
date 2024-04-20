@@ -95,10 +95,8 @@ bool Game::update(Direction direction)
             this->player_->increaseScore(numberLinesCompleted, difficulty_->getLevel(), vv.get_x());
             this->player_->increaseLinesCount(numberLinesCompleted);
 
-            if (this->player_->getLinesCompleted() % 10 == 0 && this->player_->getLinesCompleted() != 0) {
-                this->difficulty_->nextDifficulty();
-            }
-            if (this->player_->getScore() % 1000 == 0 && this->player_->getLinesCompleted() != 0) {
+            if (this->player_->getScore() >= this->difficulty_->getMaxScore() ||
+                this->player_->getLinesCompleted() >= this->difficulty_->getMaxLines()) {
                 this->difficulty_->nextDifficulty();
             }
             if(this->player_->getScore() >= this->difficulty_->getMaxScore() || this->player_->getLinesCompleted() >= this->difficulty_->getMaxLines()){

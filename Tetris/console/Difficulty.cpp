@@ -74,6 +74,8 @@ bool Difficulty::load()
 
 bool Difficulty::nextDifficulty()
 {
-    setLevel(level_+1);
+    std::cout << this->getLevel() << std::endl;
+    setLevel(this->getLevel()+1);
+    std::cout << this->getLevel() << std::endl;
     return load();
 }
