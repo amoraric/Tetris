@@ -1,7 +1,6 @@
 #include <memory>
 #include "Direction.h"
 #include "Brick.h"
-#include <iostream>
 
 Brick::Brick(BrickModel model, const Board &board) : orientation_(0), brickModel_(std::make_unique<BrickModel>(model)),
     upperLeft_(std::make_unique<Position>(0, board.getBoard()[0].size()/2)), state_(BrickState::FALLING) {
@@ -27,8 +26,6 @@ void Brick::rotation(const Board& board, bool clockwise)
     std::vector<Position> currentBrick = brickModel_->model;
     std::vector<Position> originalBrick = currentBrick;
 
-    std::cout << center_->get_x() << ":" << center_->get_y() << std::endl;
-
     std::vector<std::vector<int>> rotationMatrix;
     if (clockwise)
         rotationMatrix = {{0, 1}, {-1, 0}};
@@ -52,25 +49,28 @@ void Brick::rotation(const Board& board, bool clockwise)
     }
 }
 
-bool Brick::canMove(const Board &board, Direction direction)
+bool Brick::canMove(const std::vector<std::vector<bool>> currentBoard, Direction direction)
 {
-    auto currentBoard = board.getBoard();
     if (direction == StaticDirections::LEFT) {
         for (int i = 0; i < this->brickModel_->model.size(); i++) {
-            if (currentBoard[this->upperLeft_->get_x() + this->brickModel_->model.at(i).get_x()-1][this->upperLeft_->get_y() + this->brickModel_->model.at(i).get_y()]) {
-                return false;
+            if (this->upperLeft_->get_x() + this->brickModel_->model.at(i).get_x() <= currentBoard.size() &&
+                this->upperLeft_->get_x() + this->brickModel_->model.at(i).get_x() >= 0 &&
+                this->upperLeft_->get_y() + this->brickModel_->model.at(i).get_y()-1 <= currentBoard[0].size() &&
+                this->upperLeft_->get_y() + this->brickModel_->model.at(i).get_y()-1 >= 0) {
+                if (currentBoard[this->upperLeft_->get_x() + this->brickModel_->model.at(i).get_x()][this->upperLeft_->get_y() + this->brickModel_->model.at(i).get_y()-1]) {
+                    return false;
+                }
             }
         }
     } else if (direction == StaticDirections::RIGHT) {
         for (int i = 0; i < this->brickModel_->model.size(); i++) {
-            if (currentBoard[this->upperLeft_->get_x() + this->brickModel_->model.at(i).get_x()+1][this->upperLeft_->get_y() + this->brickModel_->model.at(i).get_y()]) {
-                return false;
-            }
-        }
-    } else {
-        for (int i = 0; i < this->brickModel_->model.size(); i++) {
-            if (currentBoard[this->upperLeft_->get_x() + this->brickModel_->model.at(i).get_x()][this->upperLeft_->get_y() + this->brickModel_->model.at(i).get_y()+1]) {
-                return false;
+            if (this->upperLeft_->get_x() + this->brickModel_->model.at(i).get_x() <= currentBoard.size() &&
+                this->upperLeft_->get_x() + this->brickModel_->model.at(i).get_x() >= 0 &&
+                this->upperLeft_->get_y() + this->brickModel_->model.at(i).get_y()+1 <= currentBoard[0].size() &&
+                this->upperLeft_->get_y() + this->brickModel_->model.at(i).get_y()+1 >= 0) {
+                if (currentBoard[this->upperLeft_->get_x() + this->brickModel_->model.at(i).get_x()][this->upperLeft_->get_y() + this->brickModel_->model.at(i).get_y()+1]) {
+                    return false;
+                }
             }
         }
     }

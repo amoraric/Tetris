@@ -70,23 +70,23 @@ void MainWindow::gameLoop() {
 
 void MainWindow::keyPressEvent(QKeyEvent *event) {
     switch (event->key()) {
-    case Qt::Key_Left:
-        facade_->translation(StaticDirections::LEFT);
-        break;
-    case Qt::Key_Right:
-        facade_->translation(StaticDirections::RIGHT);
-        break;
-    case Qt::Key_Down:
-        facade_->translation(StaticDirections::DOWN);
-        break;
-    case Qt::Key_Space:
-        facade_->drop();
-        break;
-    case Qt::Key_Up:
-        facade_->rotation(true);
-        break;
-    default:
-        QWidget::keyPressEvent(event);
+        case Qt::Key_Left:
+            facade_->translation(StaticDirections::LEFT);
+            break;
+        case Qt::Key_Right:
+            facade_->translation(StaticDirections::RIGHT);
+            break;
+        case Qt::Key_Down:
+            facade_->translation(StaticDirections::DOWN);
+            break;
+        case Qt::Key_Space:
+            facade_->drop();
+            break;
+        case Qt::Key_Up:
+            facade_->rotation(true);
+            break;
+        default:
+            QWidget::keyPressEvent(event);
     }
     update();
 }

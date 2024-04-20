@@ -56,7 +56,7 @@ public:
      * @param dy The change in y-coordinate.
      * @return True if the brick can move, false otherwise.
      */
-    bool canMove(const Board& board, Direction direction) ;
+    bool canMove(const std::vector<std::vector<bool>> currentBoard, Direction direction) ;
     /**
      * @brief Checks if the brick can rotate.
      * @param board The game board.

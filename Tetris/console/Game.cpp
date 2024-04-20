@@ -116,6 +116,9 @@ bool Game::update(Direction direction)
         else if (!this->board_->isInside(vv)) {
             return false;
         }
+        else if (!currentBrick_->canMove(this->board_->getBoard(), direction)) {
+            return false;
+        }
     }
     *currentBrick_+direction;
 

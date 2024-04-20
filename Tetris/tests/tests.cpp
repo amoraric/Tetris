@@ -50,14 +50,14 @@ TEST_CASE("Brick can't move", "[Can't move]") {
     Brick brick {StaticBrickModels::O,b};
     Position p {1,6};
     b.placeBrick(StaticBrickModels::O,p);
-    REQUIRE(brick.canMove(b,StaticDirections::DOWN) == false);
+    REQUIRE(brick.canMove(b.getBoard(),StaticDirections::DOWN) == false);
 }
 TEST_CASE("Brick can move", "[Can move]") {
     Board b {10,10};
     Brick brick {StaticBrickModels::O,b};
     Position p {2,6};
     b.placeBrick(StaticBrickModels::O,p);
-    REQUIRE(brick.canMove(b,StaticDirections::DOWN));
+    REQUIRE(brick.canMove(b.getBoard(),StaticDirections::DOWN));
 }
 TEST_CASE("Upper Left changed correctly ", "[Upper left correct]") {
     Board b {10,10};

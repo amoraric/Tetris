@@ -6,7 +6,6 @@
 #include "DrawBoard.h"
 #include <memory>
 #include "Facade.h"
-#include "QAction"
 
 namespace Ui {
 class MainWindow;

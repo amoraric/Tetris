@@ -25,9 +25,7 @@ add_executable(aba_gui ${SOURCES}
     ../console/Difficulty.cpp
     ../console/Player.cpp
     ../console/Game.cpp
-    ../console/View.cpp
     ../console/Facade.cpp
-    ../console/Controller.cpp
 )
 
 target_link_libraries(aba_gui PRIVATE Qt${QT_VERSION_MAJOR}::Widgets metier)
