@@ -6,7 +6,6 @@
 #include <QResizeEvent>
 #include <QVBoxLayout>
 #include <QTimer>
-#include "qsizepolicy.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -16,9 +15,6 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->graphicsView->setScene(_scene);
-    ui->horizontalLayout->setStretch(0, 2);
-    QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-    ui->centralwidget->setSizePolicy(sizePolicy);
 
     // because the graphicsView hasn't initialized yet so the width and height is wrong if we don't wait
     QTimer::singleShot(0, this, [this]() {
