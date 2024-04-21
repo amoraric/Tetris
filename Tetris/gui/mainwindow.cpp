@@ -100,15 +100,43 @@ void MainWindow::startGame() {
     update();
     QTimer *timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &MainWindow::gameLoop);
-    timer->start(100);
+    // cause we have 25lvls so the ultimate time is 100ms (>0)
+    timer->start(1100 - (facade_->getLevel() * 40));
 }
 
 void MainWindow::gameLoop() {
-    if (!facade_ || facade_->isGameOver()) {
+    if (facade_ && !facade_->isGameOver()) {
+        facade_->translation(StaticDirections::DOWN);
+        update();
+    } else {
         onEndGameButtonClicked();
-        return;
     }
-    update();
+}
+
+void MainWindow::updateGameStats() {
+    QFont labelFont = ui->score_label->font();
+    labelFont.setPointSize(16);
+    if (facade_) {
+        QString scoreText = QString("Score: %1").arg(facade_->getScore());
+        ui->score_label->setText(scoreText);
+        ui->score_label->setFont(labelFont);
+
+        QString levelText = QString("Level: %1").arg(facade_->getLevel());
+        ui->level_label->setText(levelText);
+        ui->level_label->setFont(labelFont);
+
+        QString linesText = QString("Lines Completed: %1").arg(facade_->getLinesCompleted());
+        ui->lines_label->setText(linesText);
+        ui->lines_label->setFont(labelFont);
+
+        QString timeText = QString("Time: %1").arg(getFormattedTime());
+        ui->time_label->setText(timeText);
+        ui->time_label->setFont(labelFont);
+    }
+}
+
+QString MainWindow::getFormattedTime() {
+    return "00:00:00";
 }
 
 MainWindow::~MainWindow()
@@ -126,6 +154,7 @@ void MainWindow::resizeEvent(QResizeEvent *event)
 
 void MainWindow::update() {
     if (facade_ && !facade_->isGameOver()) {
+        updateGameStats();
         auto boardState = facade_->game()->board()->getBoard();
         auto [currentPosition, currentBrick] = facade_->getBrickDetails();
         drawBoard->updateBoard(boardState, currentPosition, currentBrick);

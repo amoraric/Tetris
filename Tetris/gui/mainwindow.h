@@ -28,6 +28,8 @@ private slots:
     void onEndGameButtonClicked();
     void openSettingsDialog();
     void gameLoop();
+    void updateGameStats();
+    QString getFormattedTime();
 
 private:
     void resizeEvent(QResizeEvent *event) override;
