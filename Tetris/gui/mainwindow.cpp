@@ -12,12 +12,18 @@ MainWindow::MainWindow(QWidget *parent) :
     _scene(new QGraphicsScene(this)),
     drawBoard(std::make_unique<DrawBoard>(_scene)),
     facade_(nullptr),
+    timer_(std::make_unique<QTimer>(this)),
     level_(1),
     nickname_("Anonymous")
 {
     ui->setupUi(this);
     ui->graphicsView->setScene(_scene);
     this->setFocusPolicy(Qt::StrongFocus);
+    foreach(QWidget* w, this->findChildren<QWidget*>()) {
+        if (w != ui->graphicsView) {
+            w->setFocusPolicy(Qt::NoFocus);
+        }
+    }
 
     // because the graphicsView hasn't initialized yet so the width and height is wrong if we don't wait 
     QTimer::singleShot(0, this, [this]() {
@@ -94,14 +100,15 @@ void MainWindow::onEndGameButtonClicked() {
     ui->playButton->setText("Play");
     ui->settingsButton->setEnabled(true);
     drawBoard->reset();
+    timer_->stop();
 }
 
 void MainWindow::startGame() {
     update();
-    QTimer *timer = new QTimer(this);
-    connect(timer, &QTimer::timeout, this, &MainWindow::gameLoop);
+    timer_->stop();
+    connect(timer_.get(), &QTimer::timeout, this, &MainWindow::gameLoop, Qt::UniqueConnection);
     // cause we have 25lvls so the ultimate time is 100ms (>0)
-    timer->start(1100 - (facade_->getLevel() * 40));
+    timer_->start(1100 - (facade_->getLevel() * 40));
 }
 
 void MainWindow::gameLoop() {
@@ -109,6 +116,7 @@ void MainWindow::gameLoop() {
         facade_->translation(StaticDirections::DOWN);
         update();
     } else {
+        timer_->stop();
         onEndGameButtonClicked();
     }
 }

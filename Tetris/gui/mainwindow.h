@@ -39,6 +39,7 @@ private:
     std::unique_ptr<Facade> facade_;
     std::string nickname_ = "Anonymous";
     int level_ = 1;
+    std::unique_ptr<QTimer> timer_;
 
     void connectButtons();
     void startGame();
