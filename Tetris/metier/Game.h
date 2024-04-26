@@ -22,7 +22,6 @@ class Game {
     std::unique_ptr<Brick> currentBrick_; /**< The current brick. */
     std::unique_ptr<Difficulty> difficulty_; /**< The game difficulty. */
     GameState gameState_; /**< The game state. */
-    int currentTime_; /**< The current time in the game. */
 public:
     /**
      * @brief Constructor for the Game class.
@@ -92,6 +91,7 @@ public:
     Brick*currentBrick() const;
     std::string getNickname();
     int getLevel();
+    int getTimeLimit();
 };
 
 #endif // GAME_H

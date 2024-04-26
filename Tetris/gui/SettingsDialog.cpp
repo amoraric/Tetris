@@ -9,6 +9,7 @@ SettingsDialog::SettingsDialog(QWidget *parent) :
     ui->spinBoxWidth->setValue(10);
     ui->spinBoxHeight->setValue(20);
     ui->spinBoxLevel->setValue(1);
+    ui->spinBoxTimeMax->setValue(600);
 }
 
 SettingsDialog::~SettingsDialog()
@@ -34,4 +35,9 @@ std::string SettingsDialog::getNickname() const
 int SettingsDialog::getLevel() const
 {
     return ui->spinBoxLevel->value();
+}
+
+int SettingsDialog::getMaxTime() const
+{
+    return ui->spinBoxTimeMax->value();
 }

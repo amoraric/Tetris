@@ -71,6 +71,7 @@ public:
     Game* game() const;
     std::string getNickname();
     int getLevel();
+    int getTimeLimit();
     /**
      * @brief Adds an observer to the list of observers.
      * @param observer The observer to add.

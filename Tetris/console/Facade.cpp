@@ -24,8 +24,6 @@ Facade::~Facade()
 void Facade::end()
 {
     this->game_->updateState(GameState::FINISHED);
-    //arreter thread
-
 }
 
 void Facade::translation(Direction direction)
@@ -89,5 +87,6 @@ int Facade::getLinesCompleted()
     return this->game_->getLinesCompleted();
 }
 
-
-
+int Facade::getTimeLimit() {
+    return this->game_->getTimeLimit();
+}

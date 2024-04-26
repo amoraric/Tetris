@@ -19,6 +19,7 @@ public:
     int getHeight() const;
     std::string getNickname() const;
     int getLevel() const;
+    int getMaxTime() const;
 
 private:
     Ui::Dialog *ui;

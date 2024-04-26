@@ -6,6 +6,7 @@
 #include "DrawBoard.h"
 #include <memory>
 #include "Facade.h"
+#include <QElapsedTimer>
 
 namespace Ui {
 class MainWindow;
@@ -29,7 +30,7 @@ private slots:
     void openSettingsDialog();
     void gameLoop();
     void updateGameStats();
-    QString getFormattedTime();
+    void updateTimeLabel();
 
 private:
     void resizeEvent(QResizeEvent *event) override;
@@ -39,7 +40,10 @@ private:
     std::unique_ptr<Facade> facade_;
     std::string nickname_ = "Anonymous";
     int level_ = 1;
+    int timeMax_ = 600;
     std::unique_ptr<QTimer> timer_;
+    std::unique_ptr<QTimer> updateTimer_;
+    QElapsedTimer elapsedTimer_;
 
     void connectButtons();
     void startGame();

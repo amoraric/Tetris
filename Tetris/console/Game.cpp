@@ -23,7 +23,7 @@ int Game::getLevel()
     return this->difficulty_->getLevel();
 }
 
-Game::Game(std::string nickname, int level, int rows, int columns) : gameState_{GameState::READY}, currentTime_{0}
+Game::Game(std::string nickname, int level, int rows, int columns) : gameState_{GameState::READY}
 {
     board_ = std::make_unique<Board>(rows,columns);
     bag_= std::make_unique<BrickBag>();
@@ -158,3 +158,6 @@ int Game::getLinesCompleted() {
     return this->player_->getLinesCompleted();
 }
 
+int Game::getTimeLimit() {
+    return this->difficulty_->getTimeLimit();
+}

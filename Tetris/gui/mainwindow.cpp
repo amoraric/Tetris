@@ -5,6 +5,7 @@
 #include <QResizeEvent>
 #include <QVBoxLayout>
 #include <QTimer>
+#include <QTime>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -13,7 +14,9 @@ MainWindow::MainWindow(QWidget *parent) :
     drawBoard(std::make_unique<DrawBoard>(_scene)),
     facade_(nullptr),
     timer_(std::make_unique<QTimer>(this)),
+    updateTimer_(std::make_unique<QTimer>(this)),
     level_(1),
+    timeMax_(600),
     nickname_("Anonymous")
 {
     ui->setupUi(this);
@@ -30,6 +33,7 @@ MainWindow::MainWindow(QWidget *parent) :
         drawBoard->drawGrid(ui->graphicsView->width(), ui->graphicsView->height());
     });
 
+    connect(updateTimer_.get(), &QTimer::timeout, this, &MainWindow::updateTimeLabel);
     connectButtons();
 }
 
@@ -74,6 +78,7 @@ void MainWindow::openSettingsDialog() {
         nickname_ = settingsDialog.getNickname();
         int columns = settingsDialog.getWidth();
         int rows = settingsDialog.getHeight();
+        timeMax_ = settingsDialog.getMaxTime();
         drawBoard->setSize(columns, rows);
         drawBoard->drawGrid(ui->graphicsView->width(), ui->graphicsView->height());
     }
@@ -96,14 +101,33 @@ void MainWindow::onPlayButtonClicked() {
 void MainWindow::onEndGameButtonClicked() {
     if (!facade_) return;
 
+    timer_->stop();
+    updateTimer_->stop();
     facade_->end();
     ui->playButton->setText("Play");
     ui->settingsButton->setEnabled(true);
     drawBoard->reset();
-    timer_->stop();
+}
+
+void MainWindow::updateTimeLabel() {
+    if (timeMax_ <= elapsedTimer_.durationElapsed().count()/1000000000) {
+        facade_->end();
+        onEndGameButtonClicked();
+    }
+    qint64 timeElapsed = elapsedTimer_.elapsed();
+    QTime time(0, 0);
+    time = time.addMSecs(timeElapsed);
+    QString timeText = time.toString("hh:mm:ss.zzz");
+    ui->time_label->setText("Time: " + timeText);
+    QFont labelFont = ui->score_label->font();
+    labelFont.setPointSize(16);
+    ui->time_label->setFont(labelFont);
 }
 
 void MainWindow::startGame() {
+    elapsedTimer_.start();
+    updateTimer_->start(10);
+
     update();
     timer_->stop();
     connect(timer_.get(), &QTimer::timeout, this, &MainWindow::gameLoop, Qt::UniqueConnection);
@@ -136,15 +160,7 @@ void MainWindow::updateGameStats() {
         QString linesText = QString("Lines Completed: %1").arg(facade_->getLinesCompleted());
         ui->lines_label->setText(linesText);
         ui->lines_label->setFont(labelFont);
-
-        QString timeText = QString("Time: %1").arg(getFormattedTime());
-        ui->time_label->setText(timeText);
-        ui->time_label->setFont(labelFont);
     }
-}
-
-QString MainWindow::getFormattedTime() {
-    return "00:00:00";
 }
 
 MainWindow::~MainWindow()
