@@ -1,4 +1,4 @@
-#include "settingsdialog.h"
+#include "SettingsDialog.h"
 #include "ui_settingsdialog.h"
 
 SettingsDialog::SettingsDialog(QWidget *parent) :
@@ -40,4 +40,9 @@ int SettingsDialog::getLevel() const
 int SettingsDialog::getMaxTime() const
 {
     return ui->spinBoxTimeMax->value();
+}
+
+bool SettingsDialog::getRandomize() const
+{
+    return ui->randomizeCheckBox->isChecked();
 }

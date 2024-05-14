@@ -28,6 +28,7 @@ add_executable(aba_gui ${SOURCES}
     ../console/Facade.cpp
 )
 
+set_target_properties(aba_gui PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/..")
 target_link_libraries(aba_gui PRIVATE Qt${QT_VERSION_MAJOR}::Widgets metier)
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)

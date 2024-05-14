@@ -4,6 +4,7 @@
 
 Difficulty::Difficulty(int level)
 {
+    int temp_level = this->level_;
     this->level_ = level;
     std::string filename = "./difficulties/" + std::to_string(level) + ".txt";
     std::ifstream file(filename);
@@ -21,6 +22,7 @@ Difficulty::Difficulty(int level)
         file.close();
     } else {
         std::cerr << "File can't be open" << std::endl;
+        this->level_ = temp_level;
     }
 }
 

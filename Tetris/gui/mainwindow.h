@@ -31,6 +31,7 @@ private slots:
     void gameLoop();
     void updateGameStats();
     void updateTimeLabel();
+    void styleButtons();
 
 private:
     void resizeEvent(QResizeEvent *event) override;
@@ -44,6 +45,7 @@ private:
     std::unique_ptr<QTimer> timer_;
     std::unique_ptr<QTimer> updateTimer_;
     QElapsedTimer elapsedTimer_;
+    bool randomize_;
 
     void connectButtons();
     void startGame();

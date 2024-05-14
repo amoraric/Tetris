@@ -20,6 +20,7 @@ public:
     std::string getNickname() const;
     int getLevel() const;
     int getMaxTime() const;
+    bool getRandomize() const;
 
 private:
     Ui::Dialog *ui;

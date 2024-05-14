@@ -1,11 +1,12 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "settingsdialog.h"
+#include "SettingsDialog.h"
 #include <QGraphicsView>
 #include <QResizeEvent>
 #include <QVBoxLayout>
 #include <QTimer>
 #include <QTime>
+#include <iostream>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -34,13 +35,58 @@ MainWindow::MainWindow(QWidget *parent) :
     });
 
     connect(updateTimer_.get(), &QTimer::timeout, this, &MainWindow::updateTimeLabel);
+
     connectButtons();
+    styleButtons();
+
+    QPixmap pixmap("Tetris_logo.png");
+    if (pixmap.isNull()) {
+        qDebug() << "Failed to load the image.";
+    } else {
+        if (ui->title_label) {
+            QSize targetSize = pixmap.size() * 2;
+            QSize maxSize = ui->title_label->maximumSize();
+            targetSize.setWidth(qMin(targetSize.width(), maxSize.width()));
+            targetSize.setHeight(qMin(targetSize.height(), maxSize.height()));
+
+            // Scale the pixmap while maintaining the aspect ratio
+            QPixmap scaledPixmap = pixmap.scaled(targetSize, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+
+            ui->title_label->setPixmap(scaledPixmap);
+            ui->title_label->setAlignment(Qt::AlignCenter);
+            ui->title_label->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
+            ui->title_label->setScaledContents(false);
+        } else {
+            qDebug() << "Label not found.";
+        }
+    }
+
 }
 
 void MainWindow::connectButtons() {
     connect(ui->settingsButton, &QPushButton::clicked, this, &MainWindow::openSettingsDialog);
     connect(ui->playButton, &QPushButton::clicked, this, &MainWindow::onPlayButtonClicked);
     connect(ui->exitButton, &QPushButton::clicked, QApplication::quit);
+}
+
+void MainWindow::styleButtons() {
+    QString buttonStyle = "QPushButton {"
+                          "    background-color: rgb(0, 125, 0);"
+                          "    border: 1px solid rgb(0, 0, 0);"
+                          "}"
+                          "QPushButton:hover {"
+                          "    background-color: rgb(0, 175, 0);"
+                          "}";
+
+    ui->settingsButton->setStyleSheet(buttonStyle);
+    ui->playButton->setStyleSheet(buttonStyle);
+    ui->helpButton->setStyleSheet(buttonStyle);
+    ui->exitButton->setStyleSheet(buttonStyle);
+
+    ui->rightVLayout->setAlignment(ui->playButton, Qt::AlignHCenter);
+    ui->rightVLayout->setAlignment(ui->settingsButton, Qt::AlignHCenter);
+    ui->rightVLayout->setAlignment(ui->helpButton, Qt::AlignHCenter);
+    ui->rightVLayout->setAlignment(ui->exitButton, Qt::AlignHCenter);
 }
 
 void MainWindow::keyPressEvent(QKeyEvent *event) {
@@ -81,6 +127,7 @@ void MainWindow::openSettingsDialog() {
         timeMax_ = settingsDialog.getMaxTime();
         drawBoard->setSize(columns, rows);
         drawBoard->drawGrid(ui->graphicsView->width(), ui->graphicsView->height());
+        this->randomize_ = settingsDialog.getRandomize();
     }
 }
 
@@ -95,6 +142,9 @@ void MainWindow::onPlayButtonClicked() {
     std::pair<int, int> size = drawBoard->getBoardSize();
     facade_ = std::make_unique<Facade>(nickname_, level_, size.first, size.second);
     facade_->addObserver(shared_from_this());
+    if (this->randomize_) {
+        facade_->game()->board()->randomize();
+    }
     startGame();
 }
 
@@ -104,6 +154,7 @@ void MainWindow::onEndGameButtonClicked() {
     timer_->stop();
     updateTimer_->stop();
     facade_->end();
+    updateGameStats();
     ui->playButton->setText("Play");
     ui->settingsButton->setEnabled(true);
     drawBoard->reset();
@@ -171,6 +222,8 @@ MainWindow::~MainWindow()
 void MainWindow::resizeEvent(QResizeEvent *event)
 {
     QMainWindow::resizeEvent(event);
+    // QLabel::resizeEvent(event);
+    // updatePixmap();
     if (drawBoard && ui->graphicsView->scene()) {
         drawBoard->drawGrid(ui->graphicsView->width(), ui->graphicsView->height());
     }
