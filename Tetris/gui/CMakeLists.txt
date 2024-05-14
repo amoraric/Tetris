@@ -11,6 +11,9 @@ add_executable(aba_gui ${SOURCES}
     mainwindow.h
     mainwindow.cpp
     mainwindow.ui
+    HelpDialog.ui
+    HelpDialog.h
+    HelpDialog.cpp
     DrawBoard.h
     DrawBoard.cpp
     SettingsDialog.h

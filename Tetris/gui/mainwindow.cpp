@@ -1,4 +1,5 @@
 #include "mainwindow.h"
+#include "helpdialog.h"
 #include "ui_mainwindow.h"
 #include "SettingsDialog.h"
 #include <QGraphicsView>
@@ -66,7 +67,9 @@ MainWindow::MainWindow(QWidget *parent) :
 void MainWindow::connectButtons() {
     connect(ui->settingsButton, &QPushButton::clicked, this, &MainWindow::openSettingsDialog);
     connect(ui->playButton, &QPushButton::clicked, this, &MainWindow::onPlayButtonClicked);
+    connect(ui->helpButton, &QPushButton::clicked,this, &MainWindow::openHelpDialog);
     connect(ui->exitButton, &QPushButton::clicked, QApplication::quit);
+
 }
 
 void MainWindow::styleButtons() {
@@ -131,6 +134,12 @@ void MainWindow::openSettingsDialog() {
     }
 }
 
+void MainWindow::openHelpDialog(){
+    HelpDialog helpdialog(this);
+    helpdialog.exec();
+
+}
+
 void MainWindow::onPlayButtonClicked() {
     if (facade_ && !facade_->isGameOver()) {
         onEndGameButtonClicked();
@@ -161,7 +170,7 @@ void MainWindow::onEndGameButtonClicked() {
 }
 
 void MainWindow::updateTimeLabel() {
-    if (timeMax_ <= elapsedTimer_.durationElapsed().count()/1000000000) {
+    if (timeMax_ <= elapsedTimer_.elapsed()/1000000000) {
         facade_->end();
         onEndGameButtonClicked();
     }

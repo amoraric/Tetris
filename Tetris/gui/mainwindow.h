@@ -21,6 +21,7 @@ public:
     void update() override;
     ~MainWindow();
 
+
 protected:
     void keyPressEvent(QKeyEvent *event) override;
 
@@ -28,6 +29,7 @@ private slots:
     void onPlayButtonClicked();
     void onEndGameButtonClicked();
     void openSettingsDialog();
+    void openHelpDialog();
     void gameLoop();
     void updateGameStats();
     void updateTimeLabel();
@@ -45,7 +47,7 @@ private:
     std::unique_ptr<QTimer> timer_;
     std::unique_ptr<QTimer> updateTimer_;
     QElapsedTimer elapsedTimer_;
-    bool randomize_;
+    bool randomize_ = false;
 
     void connectButtons();
     void startGame();
