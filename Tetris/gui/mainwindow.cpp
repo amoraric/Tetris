@@ -7,7 +7,6 @@
 #include <QVBoxLayout>
 #include <QTimer>
 #include <QTime>
-#include <iostream>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -62,6 +61,10 @@ MainWindow::MainWindow(QWidget *parent) :
         }
     }
 
+    ui->lines_label->setStyleSheet("color: #ccffff;");
+    ui->level_label->setStyleSheet("color: #ccffff;");
+    ui->score_label->setStyleSheet("color: #ccffff;");
+    ui->time_label->setStyleSheet("color: #ccffff;");
 }
 
 void MainWindow::connectButtons() {
@@ -113,6 +116,9 @@ void MainWindow::keyPressEvent(QKeyEvent *event) {
         break;
     case Qt::Key_Up:
         facade_->rotation(true);
+        break;
+    case Qt::Key_Z:
+        facade_->rotation(false);
         break;
     default:
         QWidget::keyPressEvent(event);

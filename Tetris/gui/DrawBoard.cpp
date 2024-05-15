@@ -33,8 +33,8 @@ void DrawBoard::drawGrid(int viewWidth, int viewHeight) {
     for (int i = 0; i < exactHeight; i += blockSize) {
         for (int j = 0; j < exactWidth; j += blockSize) {
             QGraphicsRectItem *rect = scene->addRect(j, i, blockSize, blockSize);
-            rect->setBrush(QColor(153, 204, 255));
-            rect->setPen(QPen(Qt::darkBlue));
+            rect->setBrush(QColor(0, 102, 255));
+            rect->setPen(QColor(0, 0, 153));
         }
     }
 }
@@ -45,8 +45,12 @@ void DrawBoard::updateBoard(const std::vector<std::vector<bool>>& staticBoard, c
     for (int i = 0; i < numRows; i++) {
         for (int j = 0; j < numColumns; j++) {
             QGraphicsRectItem *rect = scene->addRect(j * blockSize, i * blockSize, blockSize, blockSize);
-            rect->setBrush(staticBoard[i][j] ? Qt::green : Qt::white); // Settled blocks are green, empty cells are white
-            rect->setPen(QPen(Qt::gray));
+            rect->setBrush(QColor(0, 102, 255));
+            rect->setPen(QColor(0, 0, 153));
+            if (staticBoard[i][j]) {
+                rect->setBrush(QColor(255, 0, 255));
+                rect->setPen(QPen(Qt::black));
+            }
         }
     }
 
@@ -55,7 +59,7 @@ void DrawBoard::updateBoard(const std::vector<std::vector<bool>>& staticBoard, c
         int y = currentPosition.get_y() + pos.get_y();
         if (x >= 0 && x < numRows && y >= 0 && y < numColumns) {
             QGraphicsRectItem *rect = scene->addRect(y * blockSize, x * blockSize, blockSize, blockSize);
-            rect->setBrush(Qt::red);
+            rect->setBrush(QColor(204, 255, 255));
             rect->setPen(QPen(Qt::black));
         }
     }
@@ -72,8 +76,8 @@ void DrawBoard::reset() {
     for (int i = 0; i < exactHeight; i += blockSize) {
         for (int j = 0; j < exactWidth; j += blockSize) {
             QGraphicsRectItem *rect = scene->addRect(j, i, blockSize, blockSize);
-            rect->setBrush(QColor(153, 204, 255));
-            rect->setPen(QPen(Qt::darkBlue));
+            rect->setBrush(QColor(0, 102, 255));
+            rect->setPen(QColor(0, 0, 153));
         }
     }
 }

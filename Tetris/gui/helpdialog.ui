@@ -22,6 +22,9 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">color: #ccffff</string>
+   </property>
    <property name="text">
     <string>Help</string>
    </property>
@@ -37,6 +40,9 @@
      <width>371</width>
      <height>221</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: #ccffff</string>
    </property>
    <property name="text">
     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Controls :&lt;/p&gt;&lt;p&gt;Use ➡️ to move the brick right,&lt;/p&gt;&lt;p&gt;Use ⬅️ to move the brick left&lt;/p&gt;&lt;p&gt;Use ⬇️ to move the brick down&lt;/p&gt;&lt;p&gt;Press ⬆️ to rotate right &lt;/p&gt;&lt;p&gt;Press &amp;lt;z&amp;gt; to rotate left&lt;/p&gt;&lt;p&gt;Press &amp;lt;spacebar&amp;gt; to drop the brick &lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
