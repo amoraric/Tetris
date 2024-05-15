@@ -21,6 +21,7 @@ private:
     int numRows;
     int blockSize;
     int calculateBlockSize(int width, int height);
+    QColor color;
 };
 
 #endif // DRAWBOARD_H

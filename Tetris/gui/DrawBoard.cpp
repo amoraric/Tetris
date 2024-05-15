@@ -1,4 +1,5 @@
 #include "DrawBoard.h"
+#include "BrickBag.h"
 #include <QGraphicsRectItem>
 #include <QPen>
 
@@ -53,13 +54,34 @@ void DrawBoard::updateBoard(const std::vector<std::vector<bool>>& staticBoard, c
             }
         }
     }
+    if(currentBrick.model == StaticBrickModels::O.model){
+        color.setRgb(255,255,0);
+    }
+    else if(currentBrick.model == StaticBrickModels::I.model){
+        color.setRgb(204,255,255);
+    }
+    else if(currentBrick.model == StaticBrickModels::L.model){
+        color.setRgb(0,0,255);
+    }
+    else if(currentBrick.model == StaticBrickModels::J.model){
+         color.setRgb(255,178,102);
+    }
+    else if(currentBrick.model == StaticBrickModels::S.model){
+        color.setRgb(0,204,0);
+    }
+    else if(currentBrick.model == StaticBrickModels::T.model){
+        color.setRgb(204,0,204);
+    }
+    else if(currentBrick.model == StaticBrickModels::Z.model){
+        color.setRgb(255,0,0);
+    }
 
     for (const Position& pos : currentBrick.model) {
         int x = currentPosition.get_x() + pos.get_x();
         int y = currentPosition.get_y() + pos.get_y();
         if (x >= 0 && x < numRows && y >= 0 && y < numColumns) {
             QGraphicsRectItem *rect = scene->addRect(y * blockSize, x * blockSize, blockSize, blockSize);
-            rect->setBrush(QColor(204, 255, 255));
+            rect->setBrush(color);
             rect->setPen(QPen(Qt::black));
         }
     }
