@@ -129,7 +129,6 @@ void MainWindow::keyPressEvent(QKeyEvent *event) {
 }
 
 void MainWindow::openSettingsDialog() {
-    SettingsDialog settingsDialog(this);
     if (settingsDialog.exec() == QDialog::Accepted) {
         level_ = settingsDialog.getLevel();
         nickname_ = settingsDialog.getNickname();
@@ -207,7 +206,6 @@ void MainWindow::startGame() {
 void MainWindow::gameLoop() {
     if (facade_ && !facade_->isGameOver()) {
         facade_->translation(StaticDirections::DOWN);
-        update();
     } else {
         timer_->stop();
         onEndGameButtonClicked();
@@ -240,8 +238,6 @@ MainWindow::~MainWindow()
 void MainWindow::resizeEvent(QResizeEvent *event)
 {
     QMainWindow::resizeEvent(event);
-    // QLabel::resizeEvent(event);
-    // updatePixmap();
     if (drawBoard && ui->graphicsView->scene()) {
         drawBoard->drawGrid(ui->graphicsView->width(), ui->graphicsView->height());
     }

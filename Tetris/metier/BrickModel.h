@@ -12,6 +12,11 @@ class Position;
  */
 struct BrickModel {
     std::vector<Position> model; /**< The positions that make up the shape. */
+    /**
+     * @brief Equality operator for BrickModel.
+     * @param other The other BrickModel to compare with.
+     * @return True if the models are equal, false otherwise.
+     */
     bool operator==(const BrickModel& other) const;
 };
 

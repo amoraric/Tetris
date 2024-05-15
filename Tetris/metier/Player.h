@@ -39,6 +39,10 @@ public:
      * @return The number of lines completed by the player.
      */
     int getLinesCompleted();
+    /**
+     * @brief Gets the nickname of the player.
+     * @return The nickname of the player.
+     */
     std::string getNickname();
 };
 

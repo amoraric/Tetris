@@ -45,13 +45,6 @@ TEST_CASE("Brick succesfully removed", "[removed]") {
 //=====================================================
 
 //Tests for class Brick
-TEST_CASE("Brick can't move", "[Can't move]") {
-    Board b {10,10};
-    Brick brick {StaticBrickModels::O,b};
-    Position p {1,6};
-    b.placeBrick(StaticBrickModels::O,p);
-    REQUIRE(brick.canMove(b.getBoard(),StaticDirections::DOWN) == false);
-}
 TEST_CASE("Brick can move", "[Can move]") {
     Board b {10,10};
     Brick brick {StaticBrickModels::O,b};

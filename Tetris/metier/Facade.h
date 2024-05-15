@@ -69,8 +69,20 @@ public:
      * @return A pointer to the game instance.
      */
     Game* game() const;
+    /**
+     * @brief Gets the nickname of the player.
+     * @return The nickname of the player.
+     */
     std::string getNickname();
+    /**
+     * @brief Gets the current level of the game.
+     * @return The current level of the game.
+     */
     int getLevel();
+    /**
+     * @brief Gets the time limit for the current level.
+     * @return The time limit for the current level.
+     */
     int getTimeLimit();
     /**
      * @brief Adds an observer to the list of observers.

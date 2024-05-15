@@ -1,7 +1,6 @@
 #include "Game.h"
 #include <cstdlib>
 #include <ctime>
-#include <iostream>
 
 Board*Game::board() const
 {
