@@ -1,4 +1,5 @@
 #include "mainwindow.h"
+#include "gameoverdialog.h"
 #include "helpdialog.h"
 #include "ui_mainwindow.h"
 #include "SettingsDialog.h"
@@ -166,14 +167,16 @@ void MainWindow::onPlayButtonClicked() {
 
 void MainWindow::onEndGameButtonClicked() {
     if (!facade_) return;
-
     timer_->stop();
     updateTimer_->stop();
     facade_->end();
     updateGameStats();
+    GameOverDialog gameover(this);
+    gameover.exec();
     ui->playButton->setText("Play");
     ui->settingsButton->setEnabled(true);
     drawBoard->reset();
+
 }
 
 void MainWindow::updateTimeLabel() {

@@ -17,7 +17,11 @@
    </sizepolicy>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Tetris </string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../Tetris_logo.png</normaloff>../Tetris_logo.png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color:black</string>
