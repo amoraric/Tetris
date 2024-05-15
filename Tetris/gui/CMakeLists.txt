@@ -19,6 +19,8 @@ add_executable(aba_gui ${SOURCES}
     SettingsDialog.h
     SettingsDialog.cpp
     SettingsDialog.ui
+    GuiController.h
+    GuiController.cpp
     gameoverdialog.cpp
     gameoverdialog.h
     gameoverdialog.ui

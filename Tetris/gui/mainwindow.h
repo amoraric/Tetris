@@ -7,7 +7,7 @@
 #include <memory>
 #include "Facade.h"
 #include <QElapsedTimer>
-
+class GuiController;
 namespace Ui {
 class MainWindow;
 }
@@ -17,7 +17,7 @@ class MainWindow : public QMainWindow, public Observer, public std::enable_share
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = nullptr);
+    explicit MainWindow(QWidget *parent = nullptr, GuiController* controller = nullptr);
     void update() override;
     ~MainWindow();
 

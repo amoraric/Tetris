@@ -10,17 +10,17 @@
 #include <QTime>
 #include <iostream>
 
-MainWindow::MainWindow(QWidget *parent) :
+MainWindow::MainWindow(QWidget *parent, GuiController* controller) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
     _scene(new QGraphicsScene(this)),
-    drawBoard(std::make_unique<DrawBoard>(_scene)),
-    facade_(nullptr),
-    timer_(std::make_unique<QTimer>(this)),
-    updateTimer_(std::make_unique<QTimer>(this)),
-    level_(1),
-    timeMax_(600),
-    nickname_("Anonymous")
+    drawBoard(std::make_unique<DrawBoard>(_scene))
+    //facade_(nullptr),
+    //timer_(std::make_unique<QTimer>(this)),
+    //updateTimer_(std::make_unique<QTimer>(this)),
+    //level_(1),
+    //timeMax_(600),
+    //nickname_("Anonymous")
 {
     ui->setupUi(this);
     ui->graphicsView->setScene(_scene);
