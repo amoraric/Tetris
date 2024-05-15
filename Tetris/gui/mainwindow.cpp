@@ -74,11 +74,11 @@ void MainWindow::connectButtons() {
 
 void MainWindow::styleButtons() {
     QString buttonStyle = "QPushButton {"
-                          "    background-color: rgb(0, 125, 0);"
+                          "    background-color: #0066ff;"
                           "    border: 1px solid rgb(0, 0, 0);"
                           "}"
                           "QPushButton:hover {"
-                          "    background-color: rgb(0, 175, 0);"
+                          "    background-color: #0000ff;"
                           "}";
 
     ui->settingsButton->setStyleSheet(buttonStyle);

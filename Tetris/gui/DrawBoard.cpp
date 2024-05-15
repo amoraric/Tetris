@@ -33,8 +33,8 @@ void DrawBoard::drawGrid(int viewWidth, int viewHeight) {
     for (int i = 0; i < exactHeight; i += blockSize) {
         for (int j = 0; j < exactWidth; j += blockSize) {
             QGraphicsRectItem *rect = scene->addRect(j, i, blockSize, blockSize);
-            rect->setBrush(Qt::lightGray);
-            rect->setPen(QPen(Qt::gray));
+            rect->setBrush(QColor(153, 204, 255));
+            rect->setPen(QPen(Qt::darkBlue));
         }
     }
 }
@@ -72,8 +72,8 @@ void DrawBoard::reset() {
     for (int i = 0; i < exactHeight; i += blockSize) {
         for (int j = 0; j < exactWidth; j += blockSize) {
             QGraphicsRectItem *rect = scene->addRect(j, i, blockSize, blockSize);
-            rect->setBrush(Qt::lightGray);
-            rect->setPen(QPen(Qt::gray));
+            rect->setBrush(QColor(153, 204, 255));
+            rect->setPen(QPen(Qt::darkBlue));
         }
     }
 }

@@ -19,6 +19,9 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color:#009999</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <property name="sizePolicy">
     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -49,7 +52,7 @@
       <item>
        <layout class="QVBoxLayout" name="rightVLayout" stretch="0,0,0,0,0,0,1,1,1">
         <property name="spacing">
-         <number>-1</number>
+         <number>6</number>
         </property>
         <property name="leftMargin">
          <number>2</number>
