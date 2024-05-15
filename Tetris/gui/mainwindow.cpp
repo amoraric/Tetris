@@ -7,6 +7,7 @@
 #include <QVBoxLayout>
 #include <QTimer>
 #include <QTime>
+#include <iostream>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -197,8 +198,7 @@ void MainWindow::startGame() {
     update();
     timer_->stop();
     connect(timer_.get(), &QTimer::timeout, this, &MainWindow::gameLoop, Qt::UniqueConnection);
-    // cause we have 25lvls so the ultimate time is 100ms (>0)
-    timer_->start(1100 - (facade_->getLevel() * 40));
+    timer_->start(1000 * (facade_->getTimeLimit() / 60.0));
 }
 
 void MainWindow::gameLoop() {
