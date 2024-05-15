@@ -1,26 +1,30 @@
 #include "mainwindow.h"
+#include "SettingsDialog.h"
 #include "helpdialog.h"
 #include "ui_mainwindow.h"
-#include "SettingsDialog.h"
 #include <QGraphicsView>
 #include <QResizeEvent>
 #include <QVBoxLayout>
 #include <QTimer>
 #include <QTime>
 #include <iostream>
+#include "ViewController.h"
 
-MainWindow::MainWindow(QWidget *parent) :
+MainWindow::MainWindow(QWidget *parent, ViewController* controller) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
     _scene(new QGraphicsScene(this)),
-    drawBoard(std::make_unique<DrawBoard>(_scene)),
-    facade_(nullptr),
+    drawBoard(std::make_unique<DrawBoard>(_scene))
+   /** facade_(nullptr),
     timer_(std::make_unique<QTimer>(this)),
     updateTimer_(std::make_unique<QTimer>(this)),
     level_(1),
     timeMax_(600),
-    nickname_("Anonymous")
+    nickname_("Anonymous")**/
+
+
 {
+    connect(ui->settingsButton, &QPushButton::clicked, this, &MainWindow::openSettingsDialog);
     ui->setupUi(this);
     ui->graphicsView->setScene(_scene);
     this->setFocusPolicy(Qt::StrongFocus);
@@ -37,7 +41,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(updateTimer_.get(), &QTimer::timeout, this, &MainWindow::updateTimeLabel);
 
-    connectButtons();
+
     styleButtons();
 
     QPixmap pixmap("Tetris_logo.png");
@@ -64,13 +68,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 }
 
-void MainWindow::connectButtons() {
-    connect(ui->settingsButton, &QPushButton::clicked, this, &MainWindow::openSettingsDialog);
-    connect(ui->playButton, &QPushButton::clicked, this, &MainWindow::onPlayButtonClicked);
-    connect(ui->helpButton, &QPushButton::clicked,this, &MainWindow::openHelpDialog);
-    connect(ui->exitButton, &QPushButton::clicked, QApplication::quit);
 
-}
 
 void MainWindow::styleButtons() {
     QString buttonStyle = "QPushButton {"
@@ -121,22 +119,12 @@ void MainWindow::keyPressEvent(QKeyEvent *event) {
 }
 
 void MainWindow::openSettingsDialog() {
-    SettingsDialog settingsDialog(this);
-    if (settingsDialog.exec() == QDialog::Accepted) {
-        level_ = settingsDialog.getLevel();
-        nickname_ = settingsDialog.getNickname();
-        int columns = settingsDialog.getWidth();
-        int rows = settingsDialog.getHeight();
-        timeMax_ = settingsDialog.getMaxTime();
-        drawBoard->setSize(columns, rows);
-        drawBoard->drawGrid(ui->graphicsView->width(), ui->graphicsView->height());
-        this->randomize_ = settingsDialog.getRandomize();
-    }
+    HelpDialog helpdialog(this);
+    helpdialog.exec();
+
 }
 
 void MainWindow::openHelpDialog(){
-    HelpDialog helpdialog(this);
-    helpdialog.exec();
 
 }
 
@@ -159,7 +147,6 @@ void MainWindow::onPlayButtonClicked() {
 
 void MainWindow::onEndGameButtonClicked() {
     if (!facade_) return;
-
     timer_->stop();
     updateTimer_->stop();
     facade_->end();
@@ -236,6 +223,11 @@ void MainWindow::resizeEvent(QResizeEvent *event)
     if (drawBoard && ui->graphicsView->scene()) {
         drawBoard->drawGrid(ui->graphicsView->width(), ui->graphicsView->height());
     }
+}
+
+Ui::MainWindow *MainWindow::getUi() const
+{
+    return ui;
 }
 
 void MainWindow::update() {

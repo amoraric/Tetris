@@ -7,7 +7,7 @@
 #include <memory>
 #include "Facade.h"
 #include <QElapsedTimer>
-
+class ViewController;
 namespace Ui {
 class MainWindow;
 }
@@ -17,18 +17,20 @@ class MainWindow : public QMainWindow, public Observer, public std::enable_share
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = nullptr);
+    explicit MainWindow(QWidget *parent = nullptr, ViewController* controller = nullptr);
     void update() override;
     ~MainWindow();
 
 
+    Ui::MainWindow *getUi() const;
+    void openSettingsDialog();
 protected:
     void keyPressEvent(QKeyEvent *event) override;
 
 private slots:
     void onPlayButtonClicked();
     void onEndGameButtonClicked();
-    void openSettingsDialog();
+
     void openHelpDialog();
     void gameLoop();
     void updateGameStats();
@@ -49,7 +51,7 @@ private:
     QElapsedTimer elapsedTimer_;
     bool randomize_ = false;
 
-    void connectButtons();
+
     void startGame();
 };
 

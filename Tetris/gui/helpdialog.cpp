@@ -6,6 +6,7 @@ HelpDialog::HelpDialog(QWidget *parent) :
     ui(new Ui::HelpDialog)
 {
     ui->setupUi(this);
+
 }
 
 HelpDialog::~HelpDialog()

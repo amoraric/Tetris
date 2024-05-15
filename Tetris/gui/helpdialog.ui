@@ -7,11 +7,11 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>300</height>
+    <height>255</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Help</string>
   </property>
   <widget class="QLabel" name="label">
    <property name="geometry">
@@ -23,7 +23,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Help</string>
+    <string/>
    </property>
    <property name="alignment">
     <set>Qt::AlignHCenter|Qt::AlignTop</set>
@@ -33,7 +33,7 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>60</y>
+     <y>10</y>
      <width>371</width>
      <height>221</height>
     </rect>

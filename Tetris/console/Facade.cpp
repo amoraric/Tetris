@@ -18,6 +18,11 @@ int Facade::getLevel()
 Facade::Facade(std::string nickname, int level, int rows, int columns) : game_{std::make_unique<Game>(nickname,level,rows,columns)}
 {}
 
+Facade::Facade()
+{
+
+}
+
 Facade::~Facade()
 {}
 
